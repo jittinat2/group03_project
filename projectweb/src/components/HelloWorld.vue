@@ -5,6 +5,7 @@
         <b-row>
           <b-col>
             <h1>
+              <!-- EDIT HERE -->
               ADD BRACKET PICTURE
             </h1>
           </b-col>
