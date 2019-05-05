@@ -1,25 +1,21 @@
 <template>
   <div class="hello">
     <div>
-      <b-container class="bv-example-row">
-        <b-row>
-          <b-col>
-            <h1>
-              <!-- EDIT HERE -->
-              ADD BRACKET PICTURE
-            </h1>
-          </b-col>
+      <div class="twelve wide column">
+        <h1>
+          <!-- EDIT HERE -->
+          ADD BRACKET PICTURE
+        </h1>
+      </div>
 
-          <b-col cols="12" md="auto">
-            <h3>Outline</h3>
-            <ul>
-              <li>Login to Generated</li>
-              <li href="#/">Preview</li>
-              <li href="#/">How to use</li>
-            </ul>                
-          </b-col>
-        </b-row>
-      </b-container>
+      <div class="four wide column">
+        <h3>Outline</h3>
+        <ul>
+          <li>Login to Generated</li>
+          <li href="#/">Preview</li>
+          <li href="#/">How to use</li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>

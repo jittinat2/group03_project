@@ -1,33 +1,55 @@
 <template>
   <div class="login">
-    <h2>Login</h2>
-    <form>
-      <div>
+    <div class="ui segment">
+    <form class="ui form">
+      <div class="field">
         <label>Username</label>
-        <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-        <br>
-        <label>Password</label>
-        <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
-        <br>
-        <b-form-checkbox class="mb-2 mr-sm-2 mb-sm-0">Remember me</b-form-checkbox>
-        <br>
-        <input type="submit" class="fadeIn fourth" value="Log In">
+        <input name="username" type="text" placeholder="Username">
       </div>
-       
-
+      <div class="field">
+        <label>Password</label>
+        <input name="password" type="text" placeholder="Password">
+      </div>
+      <button class="ui button" type="submit" @click="LogIn">Login</button>
     </form>
+    </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: "Login",
   data() {
     return {
-      
+      Account:{
+        username: '',
+        password: ''
+      }
     };
   },
-  methods: {}
+  methods: {
+    logIn() {
+       axios.get('http://localhost:5000/profile/user/login/:'+ this.username)
+      .then((response)=>{
+        if(this.Account.username != "" && this.Account.password != "") {
+        if(this.Account.username == response.data.username && 
+        this.Account.password == response.data.password) {
+            this.$router.replace('/BracketGenerator');
+        } else {
+          
+            alert("The username and / or password is incorrect");
+        }
+        } else {
+          
+            alert("A username and password must be present");
+        }
+      })
+      .catch((error)=>{
+        console.log(error)
+      })
+     }
+  }
 };
 </script>
 

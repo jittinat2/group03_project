@@ -1,9 +1,17 @@
 <template>
   <div id="app">
-    <div>
-      </div>
-      <!-- <img src="./assets/logo.png"> -->
-    <router-view/>
+    <div class="ui  grey inverted menu">
+    <a class="active item" href="#/">
+      <img src="./assets/logo.png">
+    </a>
+
+    <div class="right menu">
+      <a class="item">Login</a>
+      <a class="item">Sign Up</a>
+
+    </div>
+  </div>
+  <router-view/>
   </div>
 </template>
 
