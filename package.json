@@ -1,19 +1,21 @@
 {
-  "name": "jijoiiisgod",
+  "name": "projectweb",
   "version": "1.0.0",
-  "description": "jijoiiisgod",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jittinat2/jijoiiisgod.git"
-  },
-  "author": "",
+  "author": "phaksuree",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jittinat2/jijoiiisgod/issues"
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "mongodb": "^3.2.3"
   },
-  "homepage": "https://github.com/jittinat2/jijoiiisgod#readme"
+  "devDependencies": {
+    "nodemon": "^1.19.0"
+  }
 }
