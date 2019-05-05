@@ -5,7 +5,7 @@
         <div>
           <!-- Just an image -->
           <b-navbar variant="faded" type="light">
-            <b-navbar-brand href="#">
+            <b-navbar-brand href="#/">
               <img src="https://placekitten.com/g/30/30" alt="Kitten">
             </b-navbar-brand>
           </b-navbar>
@@ -26,14 +26,9 @@
         </b-collapse>
       </b-navbar>
 
-      <b-container class="bv-example-row">
-        <b-row>
-          <b-col>1 of 3</b-col>
-          <b-col cols="12" md="auto">Variable width content</b-col>
-          <b-col col lg="2">3 of 3</b-col>
-        </b-row>
-      </b-container>
+      
     </div>
+    <br><br><br><br><br><p>Hello  </p>
   </div>
 </template>
 
