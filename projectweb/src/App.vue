@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-<<<<<<< HEAD
+
     <div>
       <b-navbar toggleable="lg" type="dark" variant="info">
         <div>
@@ -27,9 +27,9 @@
         </b-collapse>
       </b-navbar>
     </div>
-=======
+
     <!-- <img src="./assets/logo.png"> -->
->>>>>>> BeamBranch
+
     <router-view/>
   </div>
 </template>
