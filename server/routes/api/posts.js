@@ -13,19 +13,43 @@ router.get('/allusers', async (req, res) => {
 router.get('/login/:username', async (req, res) => {
     const posts = await loadPostCollection();
     res.send(await posts.findOne(
-        { username: ( req.params.username ) },
-        { projection: { _id: 0 , username: 1 , password: 1 ,email: 0 , profilename: 1 } }
-    ).toArray());
+        { username: ( req.params.username ) }
+    ));
     console.log(req.params.username);
+    
+});
+
+// forget
+router.get('/forget/:email', async (req, res) => {
+    const posts = await loadPostCollection();
+    res.send(await posts.findOne(
+        { email: ( req.params.email ) }
+    ));
+    console.log(req.params.email);
+    
+});
+
+// repassword /*/ยังไม่เสด
+router.put('/forget/:id', async (req, res) => {
+    const posts = await loadPostCollection();
+    var newUser = {};
+    newUser = req.body
+    res.send(await posts.findOneAndUpdate(
+        { _id: (req.params.id) },
+        { $set: { "violations" : 3 } }
+    ));
+    console.log(req.params.email);
     
 });
 
 // Check
 router.get('/check/:username', async (req, res) => {
     const posts = await loadPostCollection();
-    res.send(await posts.findOne({username:(req.params.username)}));
+    res.send(await posts.findOne(
+        {username:(req.params.username)}
+    ));
     console.log(req.params.username);
-    
+    res.status(201).send();
 });
 
 // Signup
@@ -41,6 +65,7 @@ router.post('/signup', async (req, res) => {
     });
     res.status(201).send();
 })
+
 // Delete Posts
 router.delete('/:id', async (req, res) => {
     const posts = await loadPostCollection();
