@@ -8,7 +8,7 @@
 
             <!-- Tourament Type -->
             <div>
-                <h1>Tourament Type : 
+                <h1>Tourament Type : xxxx
                
                 </h1>
             </div>
