@@ -1,11 +1,12 @@
 <template>
   <div>
-    <h1>{{ msg }}</h1>
+    <h1 style="font-size: 100px">{{ msg }}</h1>
     <!-- input type -->
     <div>
         <h1>Tourament Name :  <input type="text" v-model="tour_name"></h1>
         <h1>Tourament Type :  <input type="text" v-model="tour_name"></h1>
         <h1>Tourament Size :  <input type="text" v-model="tour_name"></h1>
+
     </div>
 
 
@@ -17,9 +18,14 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'bracket gen',
+      msg: 'Bracket Generator',
       tour_name: '',
     }
+  },
+  methods: {
+      Generate(){
+          alert('Generate' + msg);
+      }
   }
 }
 </script>
