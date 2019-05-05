@@ -4,27 +4,94 @@
     <!-- input Zone -->
     <div>
 
-        <h1>Tourament Name :  <input type="text" v-model="tour_name"></h1>
+      <div class="ui raised segment">
+        <div class="ui raised segment">
+
+                  <div class="ui form">
+                    <div class="field">
+                        <label style="font-size:25px">Tourament Name :</label><br>
+                        <div class="ui input"><input type="text" placeholder="Tourament name"></div>
+                    </div>
+                  </div>
 
             <!-- Tourament Type -->
             <div>
-                <h1>Tourament Type : xxxx
-               
-                </h1>
+                <div class="ui form">
+                    <div class="field"><br>
+                        <label style="font-size:25px">Tourament Type :</label><br>
+                        <div class="field">
+                          <div class="ui radio checkbox">
+                            <input type="radio" name="typeOfTour" checked="checked">
+                            <label>Single Eliminate</label>
+                          </div>
+                        </div>
+                        <div class="field">
+                          <div class="ui radio checkbox">
+                            <input type="radio" name="typeOfTour">
+                            <label>Double Eliminate</label>
+                          </div>
+                        </div>
+                        <div class="field">
+                          <div class="ui radio checkbox">
+                            <input type="radio" name="typeOfTour">
+                            <label>Round Robin</label>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
             </div>
 
             <!-- Tourament Size -->
-            <div>
-                <h1>Tourament Size : 
-
-                </h1>
+            
+                 <div>
+                  <div class="ui form">
+                    <div class="field"><br>
+                        <label style="font-size:25px">Tourament Size :</label><br>
+                        <div class="field">
+                          <div class="ui radio checkbox">
+                            <input type="radio" name="sizeOfTour" checked="checked">
+                            <label>2</label>
+                          </div>
+                        </div>
+                        <div class="field">
+                          <div class="ui radio checkbox">
+                            <input type="radio" name="sizeOfTour">
+                            <label>4</label>
+                          </div>
+                        </div>
+                        <div class="field">
+                          <div class="ui radio checkbox">
+                            <input type="radio" name="sizeOfTour">
+                            <label>8</label>
+                          </div>
+                        </div>
+                        <div class="field">
+                          <div class="ui radio checkbox">
+                            <input type="radio" name="sizeOfTour">
+                            <label>16</label>
+                          </div>
+                        </div>
+                        <div class="field">
+                          <div class="ui radio checkbox">
+                            <input type="radio" name="sizeOfTour">
+                            <label>32</label>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
             </div>
 
-              
+            <br>
+            <button class="ui fluid green button" @click="Generate" style="font-size:25px">
+              Generate
+            </button>
+            
 
-    </div>
+          </div>
+      </div>
 
 
+    </div>  
   </div>
 </template>
 
@@ -42,11 +109,13 @@ export default {
   },
   methods: {
       Generate(){
-          console.log("Generate")
+          //console.log("Generate")
           //router.push({ name : "HelloWorld"})
+          alert("Generate")
       }
   }
 }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -65,5 +134,6 @@ li {
 a {
   color: #42b983;
 }
+
 
 </style>
