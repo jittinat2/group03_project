@@ -10,7 +10,7 @@
                   <div class="ui form">
                     <div class="field">
                         <label style="font-size:25px">Tourament Name :</label><br>
-                        <div class="ui input"><input type="text" placeholder="Tourament name"></div>
+                        <div class="ui input"><input type="text" placeholder="Tourament name" v-model="tour_name"></div>
                     </div>
                   </div>
 
@@ -21,19 +21,19 @@
                         <label style="font-size:25px">Tourament Type :</label><br>
                         <div class="field">
                           <div class="ui radio checkbox">
-                            <input type="radio" name="typeOfTour" checked="checked">
+                            <input type="radio" name="typeOfTour" v-model="tour_type" value="Single Eliminate">
                             <label>Single Eliminate</label>
                           </div>
                         </div>
                         <div class="field">
                           <div class="ui radio checkbox">
-                            <input type="radio" name="typeOfTour">
+                            <input type="radio" name="typeOfTour" v-model="tour_type" value="Double_Eliminate">
                             <label>Double Eliminate</label>
                           </div>
                         </div>
                         <div class="field">
                           <div class="ui radio checkbox">
-                            <input type="radio" name="typeOfTour">
+                            <input type="radio" name="typeOfTour" v-model="tour_type" value="Round_Robin">
                             <label>Round Robin</label>
                           </div>
                         </div>
@@ -49,31 +49,31 @@
                         <label style="font-size:25px">Tourament Size :</label><br>
                         <div class="field">
                           <div class="ui radio checkbox">
-                            <input type="radio" name="sizeOfTour" checked="checked">
+                            <input type="radio" name="sizeOfTour" v-model="tour_size" value="2">
                             <label>2</label>
                           </div>
                         </div>
                         <div class="field">
                           <div class="ui radio checkbox">
-                            <input type="radio" name="sizeOfTour">
+                            <input type="radio" name="sizeOfTour" v-model="tour_size" value="4">
                             <label>4</label>
                           </div>
                         </div>
                         <div class="field">
                           <div class="ui radio checkbox">
-                            <input type="radio" name="sizeOfTour">
+                            <input type="radio" name="sizeOfTour" v-model="tour_size" value="8">
                             <label>8</label>
                           </div>
                         </div>
                         <div class="field">
                           <div class="ui radio checkbox">
-                            <input type="radio" name="sizeOfTour">
+                            <input type="radio" name="sizeOfTour" v-model="tour_size" value="16">
                             <label>16</label>
                           </div>
                         </div>
                         <div class="field">
                           <div class="ui radio checkbox">
-                            <input type="radio" name="sizeOfTour">
+                            <input type="radio" name="sizeOfTour" v-model="tour_size" value="32">
                             <label>32</label>
                           </div>
                         </div>
@@ -85,17 +85,16 @@
             <button class="ui fluid green button" @click="Generate" style="font-size:25px">
               Generate
             </button>
-            
 
           </div>
       </div>
-
-
+{{tour_name}} : {{tour_type}} : {{tour_size}}
     </div>  
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 import router from '../router'
 
 export default {
@@ -104,16 +103,40 @@ export default {
     return {
       msg: 'Bracket Generator',
       tour_name: '',
-      tour_size: ''
+      tour_type: null,
+      tour_size: null, 
+
     }
   },
   methods: {
       Generate(){
           //console.log("Generate")
-          //router.push({ name : "HelloWorld"})
-          alert("Generate")
+          if(this.tour_type == null || this.tour_size == null){
+            alert("PLEASE ENTER TYPE , SIZE")
+          }
+          else{
+            let newBracket = {
+              tour_name: this.tour_name,
+              tour_type: this.tour_type,
+              tour_size: this.tour_size,
+              }
+
+            // axios.post('http://localhost:5000/generator/user', newBracket)
+            //   .then((response) => {
+            //     console.log(response)
+            //   })
+            //   .catch((error) => {
+            //     console.log(error)
+            //   })
+            //console.log(newBracket)
+
+            router.push({ name:'BracketPage', params:{newBracket} })
+          }
       }
-  }
+  },
+  mounted() {
+    //console.log(this.$route)
+  },
 }
 
 </script>
