@@ -25,10 +25,8 @@
           </b-navbar-nav>
         </b-collapse>
       </b-navbar>
-
-      
     </div>
-    <br><br><br><br><br><p>Hello  </p>
+    <router-view/>
   </div>
 </template>
 
