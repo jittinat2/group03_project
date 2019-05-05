@@ -1,16 +1,17 @@
 <template>
   <div class="login">
     <div class="ui segment">
+      <h2> Log in </h2>
     <form class="ui form">
       <div class="field">
         <label>Username</label>
-        <input name="username" type="text" placeholder="Username">
+        <input name="username" type="text" v-model="Account.username" placeholder="Username">
       </div>
       <div class="field">
         <label>Password</label>
-        <input name="password" type="text" placeholder="Password">
+        <input name="password" type="text" v-model="Account.password" placeholder="Password">
       </div>
-      <button class="ui button" type="submit" @click="LogIn">Login</button>
+      <button class="ui button" type="submit" @click="logIn">Login</button>
     </form>
     </div>
   </div>
@@ -30,12 +31,12 @@ export default {
   },
   methods: {
     logIn() {
-       axios.get('http://localhost:5000/profile/user/login/:'+ this.username)
+       axios.get('http://localhost:5000/profile/user/login/'+ this.Account.username)
       .then((response)=>{
         if(this.Account.username != "" && this.Account.password != "") {
         if(this.Account.username == response.data.username && 
         this.Account.password == response.data.password) {
-            this.$router.replace('/BracketGenerator');
+            this.$router.replace('/');
         } else {
           
             alert("The username and / or password is incorrect");

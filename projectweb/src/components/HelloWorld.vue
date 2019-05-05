@@ -1,20 +1,21 @@
 <template>
   <div class="hello">
     <div>
-      <div class="twelve wide column">
-        <h1>
-          <!-- EDIT HERE -->
-          ADD BRACKET PICTURE
-        </h1>
-      </div>
-
-      <div class="four wide column">
-        <h3>Outline</h3>
-        <ul>
-          <li>Login to Generated</li>
-          <li href="#/">Preview</li>
-          <li href="#/">How to use</li>
-        </ul>
+      <div class="ui grid">
+        <div class="ten wide column">
+          <h1>
+            <!-- EDIT HERE -->
+            ADD BRACKET PICTURE
+          </h1>
+        </div>
+        <div class="six wide column">
+          <h3>Outline</h3>
+          <ul>
+            <li>Login to Generated</li>
+            <li href="#/">Preview</li>
+            <li href="#/">How to use</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>

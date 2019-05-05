@@ -13,9 +13,8 @@ router.get('/allusers', async (req, res) => {
 router.get('/login/:username', async (req, res) => {
     const posts = await loadPostCollection();
     res.send(await posts.findOne(
-        { username: ( req.params.username ) },
-        { projection: { _id: 0 , username: 1 , password: 1 ,email: 0 , profilename: 1 } }
-    ).toArray());
+        { username: ( req.params.username ) }
+    ));
     console.log(req.params.username);
     
 });
