@@ -1,34 +1,40 @@
 <template>
   <div class="hello">
-      <div class="ui segment" id="test1">
-        <div class="ui inverted segment" id="test2">
-          <div class="ui grid">
-            <div class="ten wide column" >
-              <span>
-                <a class="active item" href="#/login">
-                  <img src="../assets/bracket-tree.png" width="850" height="500">
-                </a>
-              </span>
-            </div>
-            <div class="six wide column" >
+    <div class="ui segment" id="test1">
+      <div class="ui inverted segment" id="test2">
+        <div class="ui grid">
+          <div class="ten wide column">
+            <span>
+              <a class="active item" href="#/login">
+                <img src="../assets/bracket-tree.png" width="850" height="500">
+              </a>
+            </span>
+          </div>
+          <div class="six wide column">
+            <br>
+            <br>
+            <h3 style="color: teal; font-size: 40px">Outline</h3>
+            <br>
+            <ul>
+              <li style="color: white; font-size: 25px">
+                <a href="#/login" style="color: white;">Login to Generated</a>
+              </li>
               <br>
               <br>
-              <h3 style="color: teal; font-size: 40px">Outline</h3>
+              <li style="color: white; font-size: 25px">
+                <a href="#/" style="color: white;">Preview</a>
+              </li>
               <br>
-              <ul>
-                <li style="color: white; font-size: 25px">Login to Generated</li>
-                <br>
-                <br>
-                <li href="#/" style="color: white; font-size: 25px">Preview</li>
-                <br>
-                <br>
-                <li href="#/" style="color: white; font-size: 25px">How to use</li>
-              </ul>
-            </div>
+              <br>
+              <li style="color: white; font-size: 25px">
+                <a href="#/" style="color: white;">How to use</a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
-</div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -48,7 +54,7 @@ export default {
   background: rgba(15, 15, 15, 0);
 }
 #test2 {
-  background: rgba(15, 15, 15,0.9);
+  background: rgba(15, 15, 15, 0.9);
 }
 .outline {
   font-size: 40px;

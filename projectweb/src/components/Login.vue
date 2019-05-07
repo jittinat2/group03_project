@@ -1,59 +1,81 @@
 <template>
   <div class="login">
-    <div class="ui segment">
-      <h2> Log in </h2>
-    <form class="ui form">
-      <div class="field">
-        <label>Username</label>
-        <input name="username" type="text" v-model="Account.username" placeholder="Username">
+    <div class="ui middle aligned center aligned grid" id="test1">
+      <div class="column" style="max-width: 450px">
+        <div class="ui inverted segment" id="test2">
+          <h2>Log in</h2>
+          <form class="ui form">
+            <div class="field" style="text-align: left">
+              <label style="color: white; font-size: 15px ">Username</label>
+              <input name="username" type="text" v-model="Account.username" placeholder="Username">
+            </div>
+            <div class="field" style="text-align: left">
+              <label style="color: white; font-size: 15px ">Password</label>
+              <input name="password" type="text" v-model="Account.password" placeholder="Password">
+            </div>
+            <div style="text-align: right" id="test1">
+              <a href="#/forgot" style="color: purple; font-size: 10px">Forgot Password?</a>
+            </div>
+            <div class="left align grid" style="text-align: center">
+              <button class="ui button" type="submit" @click="logIn">Login</button>
+            </div>
+          </form>
+        </div>
       </div>
-      <div class="field">
-        <label>Password</label>
-        <input name="password" type="text" v-model="Account.password" placeholder="Password">
-      </div>
-      <button class="ui button" type="submit" @click="logIn">Login</button>
-    </form>
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
+import axios from "axios";
 export default {
   name: "Login",
   data() {
     return {
-      Account:{
-        username: '',
-        password: ''
+      Account: {
+        username: "",
+        password: ""
       }
     };
   },
   methods: {
     logIn() {
-       axios.get('http://localhost:5000/profile/user/login/'+ this.Account.username)
-      .then((response)=>{
-        if(this.Account.username != "" && this.Account.password != "") {
-        if(this.Account.username == response.data.username && 
-        this.Account.password == response.data.password) {
-            this.$router.replace('/');
-        } else {
-          
-            alert("The username and / or password is incorrect");
-        }
-        } else {
-          
+      axios
+        .get(
+          "http://localhost:5000/profile/user/login/" + this.Account.username
+        )
+        .then(response => {
+          if (this.Account.username != "" && this.Account.password != "") {
+            if (
+              this.Account.username == response.data.username &&
+              this.Account.password == response.data.password
+            ) {
+              this.$router.replace("/");
+            } else {
+              alert("The username and / or password is incorrect");
+            }
+          } else {
             alert("A username and password must be present");
-        }
-      })
-      .catch((error)=>{
-        console.log(error)
-      })
-     }
+          }
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
   }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+#test1 {
+  background: rgba(15, 15, 15, 0);
+}
+#test2 {
+  background: rgba(15, 15, 15, 0.9);
+}
+h2 {
+  color: white;
+  font-size: 30px;
+}
 </style>
