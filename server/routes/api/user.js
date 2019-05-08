@@ -9,6 +9,16 @@ router.get('/allusers', async (req, res) => {
 
 });
 
+<<<<<<< HEAD
+=======
+// Search User
+router.post('/AUser', async (req, res) => {
+    let users = await loadUserCollection();
+    res.send (await users.findOne({username: ( req.body.username )}))
+
+});
+
+>>>>>>> noonPath
 // login
 router.post('/login', async (req, res) => {
 
@@ -78,8 +88,15 @@ router.post('/rePassword', async (req, res) => {
 router.post('/signup', async (req, res) => {
     let users = await loadUserCollection();
     let signup = await users.findOne(
+<<<<<<< HEAD
         { username: ( req.body.username ) }
     );
+=======
+        { username:  req.body.username  }
+    );
+    console.log(signup);
+    
+>>>>>>> noonPath
     if (signup === null){
         await users.insertOne({
             username: req.body.username,
