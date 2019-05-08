@@ -5,12 +5,20 @@
         <img src="./assets/logo.png">
       </a>
 
-    <div class="right menu">
-      <a class="item" href="#/login">Login</a>
-      <a class="item" href="#/signup">Sign Up</a>
+      <div class="compact right menu">
+
+          <div class="ui item">
+            <a v-if="check != 'Success'" href="#/login">Login</a>
+            </div>
+            <div class="ui item">
+          <a  v-if="check != 'Success'" href="#/signup">Sign Up</a>
+            </div>
+          
+        </div>
+
     </div>
     
-  </div>
+
   <router-view/>
   </div>
 </template>

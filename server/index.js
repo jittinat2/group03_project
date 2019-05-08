@@ -14,6 +14,13 @@ const brackets = require('./routes/api/bracket');
 // app.use('/profile', posts);
 // app.use('/generator', brackets);
 
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { }
+  }))
+
 app.use('/profile', users);
 app.use('/bracket', brackets);
 
