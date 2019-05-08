@@ -6,10 +6,13 @@
     </a>
 
     <div class="right menu">
-      <a class="item" href="#/login">Login</a>
-      <a class="item" href="#/signup">Sign Up</a>
-
+    <div class="item">
+      <a href="" v-if="true">aaaaa  </a>
     </div>
+    <a class="ui item">
+      Logout
+    </a>
+  </div>
   </div>
   <router-view/>
   </div>
