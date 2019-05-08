@@ -18,6 +18,7 @@
             </div>
             <div class="left align grid" style="text-align: center">
               <button class="ui button" type="submit" @click="logIn">Login</button>
+                        <button class="ui button"  type="submit" href="#/signup">Sign Up</button>
             </div>
           </form>
         </div>
@@ -35,11 +36,11 @@ export default {
       Account: {
         username: "",
         password: ""
-      }
+      },
+       check: []
     };
   },
   methods: {
-
     logIn() {
       axios
         .post(
@@ -54,7 +55,7 @@ export default {
     }
   },
   mounted(){
-    
+    this.check = response.data.result
   }
 };
 </script>
