@@ -25,12 +25,12 @@
                             <label>Single Eliminate</label>
                           </div>
                         </div>
-                        <div class="field">
+                        <!-- <div class="field">
                           <div class="ui radio checkbox">
                             <input type="radio" name="typeOfTour" v-model="tour_type" value="Double_Eliminate">
                             <label>Double Eliminate</label>
                           </div>
-                        </div>
+                        </div> -->
                         <div class="field">
                           <div class="ui radio checkbox">
                             <input type="radio" name="typeOfTour" v-model="tour_type" value="Round_Robin">

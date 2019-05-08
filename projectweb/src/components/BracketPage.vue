@@ -27,41 +27,27 @@
         </div>
         
         <!-- GRID -->
-          {{numOfMatch}}
+          
         <div v-bind:class="divNameOfGrid"> <!-- <div class="ui three column divided grid"> -->
           <div class="stretched row">
+            
             <div class="column" v-for="i in numOfRound" v-bind:key="i"> <!-- v-for="i in 3" v-bind:key="i" -->
-              <div class="ui segment" v-for="j in numOfMatch" v-bind:key="j" v-if="i*j <= numOfMatch"> <!-- v-if="i*j <= numOfMatch" -->
-                <div class="ui vertical buttons" style="margin-left:200px">
-                  <button class="ui active black button">TEAM {{i*j}}</button>
-                    <div class="or" data-text="VS" style="margin-left:45px"></div>
-                  <button class="ui active orange button">TEAM {{j}}</button>
-                </div>
-              </div>
-              <!-- <div class="ui segment">
-                <div class="ui vertical buttons">
-                  <button class="ui active black button">TEAM 3</button>
-                    <div class="or" data-text="VS" style="margin-left:45px"></div>
-                  <button class="ui active orange button">TEAM 4</button>
-                </div>
-              </div>
-              <div class="ui segment">3</div>
-              <div class="ui segment">4</div> -->
-            </div>
-            <!-- <div class="column">
-              <div class="ui segment">
-                <div class="ui vertical buttons">
-                  <button class="ui active black button">TEAM 1</button>
-                    <div class="or" data-text="VS" style="margin-left:45px"></div>
-                  <button class="ui active orange button">TEAM 2</button>
-                </div>
-              </div>
-              <div class="ui segment">2</div>
-            </div>
+              
+              <div class="ui raised segment" id="grid" v-for="j in numOfCreateMatch[numOfRound-i]" v-bind:key="j" > <!-- v-if="i*j <= numOfMatch" -->
+                <!-- <div class="ui vertical fluid buttons"> -->
+                  <div class="ui inverted segment" v-if="i>1" style="margin-top:25px" id='transparent'></div>
+                
+                  <div class="ui inverted segment" v-if="i>2" style="margin-top:90px" id='transparent'></div>
+                  
+                  <div class="ui inverted segment" v-if="i>3" style="margin-top:240px" id='transparent'></div>
+                  
+                  <div class="ui inverted segment" v-if="i>4" style="margin-top:480px" id='transparent'></div>
 
-            <div class="column">
-              <div class="ui segment">1</div>
-            </div> -->
+                  <button class="ui active black fluid button" id='buttonTeam' style="height:35px">{{ }}</button> <!-- TEAM {{ (j*2)-1 }} -->
+                    <!-- <div class="or" data-text="VS" style="margin-left:45px"></div> -->
+                  <button class="ui active orange fluid button" id='buttonTeam' style="height:35px">{{ }}</button> <!-- TEAM {{ j*2 }} -->
+                </div>
+              </div>
           </div>
         </div>
 
@@ -81,8 +67,7 @@ export default {
      // numOfRound:[{_id:'1',}],
       numOfMatch: 0,
       numOfRound: 0,
-      start: 5,
-      end: 10
+      numOfCreateMatch:[],
     };
   },
 
@@ -92,10 +77,10 @@ export default {
     // console.log(writtenNumber(2))
    
     console.log(this.$route)
-    console.log(this.$route.params.newBracket.tour_size)
+    console.log('tour_size : ' + this.$route.params.newBracket.tour_size)
     var round = Math.log(parseInt(this.$route.params.newBracket.tour_size)) / Math.log(2)
     var numOfRoundNameDiv = ''
-    console.log(round)
+    console.log('round : ' + round)
       if(round == 1) numOfRoundNameDiv = 'one'
       if(round == 2) numOfRoundNameDiv = 'two'
       if(round == 3) numOfRoundNameDiv = 'three'
@@ -103,12 +88,31 @@ export default {
       if(round == 5) numOfRoundNameDiv = 'five'
     this.divNameOfGrid = 'ui ' + numOfRoundNameDiv + ' column divided grid'
     this.numOfMatch = this.$route.params.newBracket.tour_size / 2
+    
+    for(var i=0 ; i < round ; i++){
+      this.numOfCreateMatch[i] = Math.pow(2,i)
+    }
+
     this.numOfRound = round
     console.log("numOfMatch : " + this.numOfMatch)
+    console.log("numOfCreateMatch : " + this.numOfCreateMatch)
   },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+#buttonTeam{
+  margin: 0;
+  /* position: absolute; */
+  top: 50%;
+  /* -ms-transform: translateY(-50%);
+  transform: translateY(-50%); */
+}
+#grid{
+  background: rgba(15, 15, 15, 0.4);
+}
+#transparent{
+  background: rgba(15, 15, 15, 0);
+}
 </style>
