@@ -14,7 +14,7 @@
                     </div>
                   </div>
 
-            <!-- Tourament Type -->
+            <!-- Tourament Type
             <div>
                 <div class="ui form">
                     <div class="field"><br>
@@ -25,12 +25,12 @@
                             <label>Single Eliminate</label>
                           </div>
                         </div>
-                        <!-- <div class="field">
+                         <div class="field">
                           <div class="ui radio checkbox">
                             <input type="radio" name="typeOfTour" v-model="tour_type" value="Double_Eliminate">
                             <label>Double Eliminate</label>
                           </div>
-                        </div> -->
+                        </div>
                         <div class="field">
                           <div class="ui radio checkbox">
                             <input type="radio" name="typeOfTour" v-model="tour_type" value="Round_Robin">
@@ -39,7 +39,7 @@
                         </div>
                     </div>
                   </div>
-            </div>
+            </div>-->
 
             <!-- Tourament Size -->
             
@@ -88,7 +88,7 @@
 
           </div>
       </div>
-{{tour_name}} : {{tour_type}} : {{tour_size}}
+{{tour_name}} : {{tour_size}}
     </div>  
   </div>
 </template>
@@ -102,8 +102,8 @@ export default {
   data () {
     return {
       msg: 'Bracket Generator',
-      tour_name: '',
-      tour_type: null,
+      tour_name: null,
+      //tour_type: null,
       tour_size: null, 
 
     }
@@ -111,17 +111,17 @@ export default {
   methods: {
       Generate(){
           //console.log("Generate")
-          if(this.tour_type == null || this.tour_size == null){
-            alert("PLEASE ENTER TYPE , SIZE")
+          if(this.tour_name == null || this.tour_size == null){
+            alert("PLEASE ENTER NAME , SIZE")
           }
           else{
             let newBracket = {
               tour_name: this.tour_name,
-              tour_type: this.tour_type,
+              //tour_type: this.tour_type,
               tour_size: this.tour_size,
               }
 
-            // axios.post('http://localhost:5000/generator/user', newBracket)
+            // axios. ('http://localhost:5000/generator/user', newBracket)
             //   .then((response) => {
             //     console.log(response)
             //   })

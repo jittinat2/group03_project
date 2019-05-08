@@ -20,17 +20,14 @@
             <div class="column" v-for="i in numOfRound" v-bind:key="i"> <!-- v-for="i in 3" v-bind:key="i" -->
               
               <div class="ui raised segment" id="grid" v-for="j in numOfCreateMatch[numOfRound-i]" v-bind:key="j" > <!-- v-if="i*j <= numOfMatch" -->
-                <!-- <div class="ui vertical fluid buttons"> -->
-                  <div class="ui inverted segment" v-if="i>1" style="margin-top:25px" id='transparent'></div>
                 
-                  <div class="ui inverted segment" v-if="i>2" style="margin-top:90px" id='transparent'></div>
                   
-                  <div class="ui inverted segment" v-if="i>3" style="margin-top:240px" id='transparent'></div>
-                  
+                  <div class="ui inverted segment" v-if="i>1" style="margin-top:25px" id='transparent'></div> 
+                  <div class="ui inverted segment" v-if="i>2" style="margin-top:90px" id='transparent'></div>                
+                  <div class="ui inverted segment" v-if="i>3" style="margin-top:240px" id='transparent'></div>               
                   <div class="ui inverted segment" v-if="i>4" style="margin-top:480px" id='transparent'></div>
 
                   <button class="ui active white fluid button"  style="height:35px">{{ Result[i-1][(j*2)-2].teamName }}</button> <!-- TEAM {{ (j*2)-1 }} ,,,, Result[i][j]-->
-                    <!-- <div class="or" data-text="VS" style="margin-left:45px"></div> -->
                   <button class="ui active blue fluid button" style="height:35px">{{ Result[i-1][(j*2)-1].teamName }}</button> <!-- TEAM {{ j*2 }} -->
                 </div>
               </div>
@@ -78,9 +75,6 @@ export default {
   },
 
   mounted() {
-    // var writtenNumber = require('written-number');
-    // console.log(converterrr.toWord(2))
-    // console.log(writtenNumber(2))
    
     console.log(this.$route)
     console.log('tour_size : ' + this.$route.params.newBracket.tour_size)
@@ -109,11 +103,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 #buttonTeam{
-  margin: 0;
-  /* position: absolute; */
-  top: 50%;
-  /* -ms-transform: translateY(-50%);
-  transform: translateY(-50%); */
+
 }
 #grid{
   background: rgba(255, 247, 247, 0.05);
