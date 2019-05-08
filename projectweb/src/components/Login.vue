@@ -36,8 +36,7 @@ export default {
       Account: {
         username: "",
         password: ""
-      },
-       check: []
+      }
     };
   },
   methods: {
@@ -55,7 +54,7 @@ export default {
     }
   },
   mounted(){
-    this.check = response.data.result
+
   }
 };
 </script>

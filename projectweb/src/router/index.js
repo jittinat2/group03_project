@@ -45,5 +45,10 @@ export default new Router({
       name: 'Login',
       component: Login
     },
+    {
+      path: '/forgot',
+      name: 'Forgot',
+      component: Forgot
+    },
   ]
 })
