@@ -18,6 +18,7 @@
             </div>
             <div class="left align grid" style="text-align: center">
               <button class="ui button" type="submit" @click="logIn">Login</button>
+                        <button class="ui button"  type="submit" href="#/signup">Sign Up</button>
             </div>
           </form>
         </div>
@@ -35,33 +36,26 @@ export default {
       Account: {
         username: "",
         password: ""
-      }
+      },
+       check: []
     };
   },
   methods: {
     logIn() {
       axios
-        .get(
-          "http://localhost:5000/profile/login/" + this.Account.username
+        .post(
+          "http://localhost:5000/profile/login" , this.Account
         )
         .then(response => {
-          if (this.Account.username != "" && this.Account.password != "") {
-            if (
-              this.Account.username == response.data.username &&
-              this.Account.password == response.data.password
-            ) {
-              this.$router.replace("/signup");
-            } else {
-              alert("The username and / or password is incorrect");
-            }
-          } else {
-            alert("A username and password must be present");
-          }
+         console.log(response.data.result)
         })
         .catch(error => {
           console.log(error);
         });
     }
+  },
+  mounted(){
+    this.check = response.data.result
   }
 };
 </script>

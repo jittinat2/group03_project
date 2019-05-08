@@ -6,14 +6,14 @@
           <div class="ten wide column">
             <span>
               <a class="active item" href="#/login">
-                <img src="../assets/bracket-tree.png" width="850" height="500">
+                <img src="../assets/pink.jpg" width="850" height="500" opacity="0.5">
               </a>
             </span>
           </div>
           <div class="six wide column">
             <br>
             <br>
-            <h3 style="color: teal; font-size: 40px">Outline</h3>
+            <h3 style="color: pink; font-size: 40px">Outline</h3>
             <br>
             <ul>
               <li style="color: white; font-size: 25px">
@@ -42,9 +42,11 @@ export default {
   name: "HelloWorld",
   data() {
     return {
-      msg: "Welcome to Your Vue.js App"
+      msg: "Welcome to Your Vue.js App",
+      
     };
-  }
+  },
+
 };
 </script>
 
@@ -54,7 +56,7 @@ export default {
   background: rgba(15, 15, 15, 0);
 }
 #test2 {
-  background: rgba(15, 15, 15, 0.9);
+  background: rgba(15, 15, 15, 0.8);
 }
 .outline {
   font-size: 40px;
