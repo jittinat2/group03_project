@@ -39,24 +39,14 @@ export default {
     };
   },
   methods: {
+
     logIn() {
       axios
-        .get(
-          "http://localhost:5000/profile/login/" + this.Account.username
+        .post(
+          "http://localhost:5000/profile/login/" + Account
         )
         .then(response => {
-          if (this.Account.username != "" && this.Account.password != "") {
-            if (
-              this.Account.username == response.data.username &&
-              this.Account.password == response.data.password
-            ) {
-              this.$router.replace("/signup");
-            } else {
-              alert("The username and / or password is incorrect");
-            }
-          } else {
-            alert("A username and password must be present");
-          }
+         console.log(response.status)
         })
         .catch(error => {
           console.log(error);
