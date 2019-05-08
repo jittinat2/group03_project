@@ -9,6 +9,13 @@ router.get('/allusers', async (req, res) => {
 
 });
 
+// Search User
+router.post('/AUser', async (req, res) => {
+    let users = await loadUserCollection();
+    res.send (await users.findOne({username: ( req.body.username )}))
+
+});
+
 // login
 router.post('/login', async (req, res) => {
 
@@ -77,9 +84,11 @@ router.post('/rePassword', async (req, res) => {
 // Signup
 router.post('/signup', async (req, res) => {
     let users = await loadUserCollection();
-    let signup = await users.find(
-        { username: ( req.body.username ) }
+    let signup = await users.findOne(
+        { username:  req.body.username  }
     );
+    console.log(signup);
+    
     if (signup === null){
         await users.insertOne({
             username: req.body.username,
