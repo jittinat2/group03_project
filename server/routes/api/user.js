@@ -16,6 +16,11 @@ router.post('/AUser', async (req, res) => {
 
 });
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> BracketGenerator
 // login
 router.post('/login', async (req, res) => {
 
@@ -85,10 +90,18 @@ router.post('/rePassword', async (req, res) => {
 router.post('/signup', async (req, res) => {
     let users = await loadUserCollection();
     let signup = await users.findOne(
+<<<<<<< HEAD
         { username:  req.body.username  }
     );
     console.log(signup);
     
+=======
+
+        { username:  req.body.username  }
+    );
+    console.log(signup);
+
+>>>>>>> BracketGenerator
     if (signup === null){
         await users.insertOne({
             username: req.body.username,

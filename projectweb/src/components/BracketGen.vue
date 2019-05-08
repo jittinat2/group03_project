@@ -1,10 +1,10 @@
 <template>
   <div>
-    <h1 style="font-size: 100px">{{ msg }}</h1>
+    <h1 style="font-size: 100px; color:white;">{{ msg }}</h1>
     <!-- input Zone -->
     <div>
 
-      <div class="ui raised segment">
+      <div class="ui raised segment" style="margin-left:30%; margin-right:30%;">
         <div class="ui raised segment">
 
                   <div class="ui form">

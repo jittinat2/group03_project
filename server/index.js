@@ -11,6 +11,10 @@ app.use(cors());
 const users = require('./routes/api/user');
 const brackets = require('./routes/api/bracket');
 
+<<<<<<<<< Temporary merge branch 1
+app.use('/profile', users);
+app.use('/generator', brackets);
+=========
 app.use(session({
     secret: 'keyboard cat',
     resave: false,
