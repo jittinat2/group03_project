@@ -10,8 +10,8 @@ app.use(cors());
 const posts = require('./routes/api/posts');
 const brackets = require('./routes/api/bracket');
 
-app.use('/profile/user', posts);
-app.use('/', brackets);
+app.use('/profile', posts);
+app.use('/generator', brackets);
 
 const port = process.env.PORT || 5000;
 

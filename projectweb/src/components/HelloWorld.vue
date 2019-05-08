@@ -1,25 +1,38 @@
 <template>
   <div class="hello">
-    <div>
-      <b-container class="bv-example-row">
-        <b-row>
-          <b-col>
-            <h1>
-              <!-- EDIT HERE -->
-              ADD BRACKET PICTURE
-            </h1>
-          </b-col>
-
-          <b-col cols="12" md="auto">
-            <h3>Outline</h3>
+    <div class="ui segment" id="test1">
+      <div class="ui inverted segment" id="test2">
+        <div class="ui grid">
+          <div class="ten wide column">
+            <span>
+              <a class="active item" href="#/login">
+                <img src="../assets/bracket-tree.png" width="850" height="500">
+              </a>
+            </span>
+          </div>
+          <div class="six wide column">
+            <br>
+            <br>
+            <h3 style="color: teal; font-size: 40px">Outline</h3>
+            <br>
             <ul>
-              <li>Login to Generated</li>
-              <li href="#/">Preview</li>
-              <li href="#/">How to use</li>
-            </ul>                
-          </b-col>
-        </b-row>
-      </b-container>
+              <li style="color: white; font-size: 25px">
+                <a href="#/login" style="color: white;">Login to Generated</a>
+              </li>
+              <br>
+              <br>
+              <li style="color: white; font-size: 25px">
+                <a href="#/" style="color: white;">Preview</a>
+              </li>
+              <br>
+              <br>
+              <li style="color: white; font-size: 25px">
+                <a href="#/" style="color: white;">How to use</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -37,4 +50,29 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+#test1 {
+  background: rgba(15, 15, 15, 0);
+}
+#test2 {
+  background: rgba(15, 15, 15, 0.9);
+}
+.outline {
+  font-size: 40px;
+  opacity: 1;
+}
+.list {
+  font-size: 25px;
+  opacity: 1;
+}
+div.bracket {
+}
+.h3 {
+  color: red;
+}
+.ul {
+  color: white;
+}
+.dimmer {
+  background-color: rgba(250, 250, 50, 0.1);
+}
 </style>
