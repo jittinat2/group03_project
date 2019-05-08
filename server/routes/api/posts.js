@@ -75,7 +75,8 @@ router.delete('/:id', async (req, res) => {
 
 async function loadPostCollection() {
     const client = await mongodb.MongoClient.connect
-    ('mongodb+srv://phaksuree:Nan_79678956@mycluster-bpdtm.mongodb.net', {
+    //username password
+    ('mongodb+srv://beam5544:Beseody_kung5544@mycluster-bpdtm.mongodb.net', {
         useNewUrlParser: true
     }) 
 

@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
-import Login from '@/components/Login'
 import BracketGen from '@/components/BracketGen'
+import BracketPage from '@/components/BracketPage'
 import SignUp from '@/components/signup'
+import HowTo from '@/components/howto'
+
 
 Vue.use(Router)
 
@@ -15,19 +17,26 @@ export default new Router({
       component: HelloWorld
     },
     {
-      path: '/login',
-      name: 'Login',
-      component: Login
-    },
-    {
       path: '/BracketGenerator',
       name: 'BracketGen',
       component: BracketGen
     },
     {
+
+      path: '/BracketPage',
+      name: 'BracketPage',
+      component: BracketPage
+    },
+
+    {
       path: '/signup',
       name: 'SignUp',
       component: SignUp
+    },
+    {
+      path: 'howto',
+      name: 'HowTo',
+      component: HowTo
     },
   ]
 })
