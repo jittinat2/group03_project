@@ -43,15 +43,18 @@ export default {
     logIn() {
       axios
         .post(
-          "http://localhost:5000/profile/login/" + Account
+          "http://localhost:5000/profile/login" , this.Account
         )
         .then(response => {
-         console.log(response.status)
+         console.log(response.data.result)
         })
         .catch(error => {
           console.log(error);
         });
     }
+  },
+  mounted(){
+    
   }
 };
 </script>

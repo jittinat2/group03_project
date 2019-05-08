@@ -35,8 +35,9 @@
                 placeholder="Profilename"
               >
             </div>
-            <button class="ui button" type="submit" @click="signUp">SignUp</button>
+            
           </form>
+          <button class="ui button" type="submit" @click="signUp">SignUp</button>
         </div>
       </div>
     </div>
@@ -78,20 +79,14 @@ export default {
         axios
         .post("http://localhost:5000/profile/signup", newUser)
         .then(response => {
-          console.log(newUser);
-          this.$router.replace("#/"); 
+          console.log(response.data.result);
+          console.log(newUser.username)
+          //this.$router.replace("#/"); 
         })
         .catch(error => {
           console.log(error);
         })
-        .get(
-          "http://localhost:5000/profile/check/" + this.Account.username
-        )
-        .then(response=>{
-          if (this.Account.username == response.data.username){
-              alert("Jijoii")
-          }
-        })
+
          // }else{
         //    alert("Username cannot used")
         //  }

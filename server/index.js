@@ -7,10 +7,10 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-const posts = require('./routes/api/posts');
+const users = require('./routes/api/user');
 const brackets = require('./routes/api/bracket');
 
-app.use('/profile', posts);
+app.use('/profile', users);
 app.use('/generator', brackets);
 
 const port = process.env.PORT || 5000;

@@ -77,7 +77,7 @@ router.post('/rePassword', async (req, res) => {
 // Signup
 router.post('/signup', async (req, res) => {
     let users = await loadUserCollection();
-    let signup = await users.find(
+    let signup = await users.findOne(
         { username: ( req.body.username ) }
     );
     if (signup === null){

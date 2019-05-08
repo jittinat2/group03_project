@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import BracketGen from '@/components/BracketGen'
 import BracketPage from '@/components/BracketPage'
+import Login from '@/components/login'
 import SignUp from '@/components/signup'
 import HowTo from '@/components/howto'
 
@@ -37,6 +38,11 @@ export default new Router({
       path: 'howto',
       name: 'HowTo',
       component: HowTo
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login
     },
   ]
 })
