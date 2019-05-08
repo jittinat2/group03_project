@@ -51,10 +51,10 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 #test1 {
-  background: rgba(15, 15, 15, 0);
+  /* background: rgba(15, 15, 15, 0); */
 }
 #test2 {
-  background: rgba(15, 15, 15, 0.9);
+  background: rgba(15, 15, 15, 0.8);
 }
 .outline {
   font-size: 40px;

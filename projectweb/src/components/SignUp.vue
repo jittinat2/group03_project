@@ -83,7 +83,15 @@ export default {
         })
         .catch(error => {
           console.log(error);
-        });
+        })
+        .get(
+          "http://localhost:5000/profile/check/" + this.Account.username
+        )
+        .then(response=>{
+          if (this.Account.username == response.data.username){
+              alert("Jijoii")
+          }
+        })
          // }else{
         //    alert("Username cannot used")
         //  }
