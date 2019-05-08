@@ -42,7 +42,7 @@ export default {
     logIn() {
       axios
         .get(
-          "http://localhost:5000/profile/user/login/" + this.Account.username
+          "http://localhost:5000/profile/login/" + this.Account.username
         )
         .then(response => {
           if (this.Account.username != "" && this.Account.password != "") {
@@ -50,7 +50,7 @@ export default {
               this.Account.username == response.data.username &&
               this.Account.password == response.data.password
             ) {
-              this.$router.replace("/");
+              this.$router.replace("/signup");
             } else {
               alert("The username and / or password is incorrect");
             }
@@ -72,7 +72,7 @@ export default {
   background: rgba(15, 15, 15, 0);
 }
 #test2 {
-  background: rgba(15, 15, 15, 0.9);
+  background: rgba(15, 15, 15, 0.8);
 }
 h2 {
   color: white;
