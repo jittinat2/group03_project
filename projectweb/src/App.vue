@@ -6,19 +6,19 @@
       </a>
 
       <div class="compact right menu">
-        <div>
+
           <div class="ui item">
-            <a v-if="check == 'Success'" href="#/login">Login</a>
+            <a v-if="check != 'Success'" href="#/login">Login</a>
             </div>
             <div class="ui item">
-          <a  v-if="check == 'Success'" href="#/signup">Sign Up</a>
+          <a  v-if="check != 'Success'" href="#/signup">Sign Up</a>
             </div>
           
         </div>
-      </div>
+
     </div>
     
-  </div>
+
   <router-view/>
   </div>
 </template>
