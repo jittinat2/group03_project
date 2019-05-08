@@ -16,8 +16,8 @@
             <h3 style="color: pink; font-size: 40px">Outline</h3>
             <br>
             <ul>
-              <li style="color: white; font-size: 25px">
-                <a href="#/login" style="color: white;">Login to Generated</a>
+              <li style="color: white; font-size: 25px" v-if="check == 'Success'">
+                <a href="#/login" style="color: white;" >Login to Generated</a>
               </li>
               <br>
               <br>
@@ -46,7 +46,17 @@ export default {
       
     };
   },
-
+    mounted() {
+    axios
+      .post("http://localhost:5000/profile/checklogin", this.Account)
+      .then(response => {
+        console.log(response.data.result);
+        this.check = response.data.result;
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
 };
 </script>
 

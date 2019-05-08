@@ -6,6 +6,7 @@ import BracketPage from '@/components/BracketPage'
 import Login from '@/components/login'
 import SignUp from '@/components/signup'
 import HowTo from '@/components/howto'
+import Forgot from '@/components/forgot'
 
 
 Vue.use(Router)

@@ -5,15 +5,12 @@
         <img src="./assets/logo.png">
       </a>
 
-      <div class="compact right menu">
-        <div>
-          <div class="ui item">
-            <a v-if="check == 'Success'" href="#/login">Login</a>
-            </div>
-            <div class="ui item">
-          <a  v-if="check == 'Success'" href="#/signup">Sign Up</a>
-            </div>
-          
+      <div class="compact right menu" v-if="check == 'Success'">
+        <div class="ui item">
+          <a href="#/login">Login</a>
+        </div>
+        <div class="ui item">
+          <a href="#/signup">Sign Up</a>
         </div>
       </div>
     </div>
