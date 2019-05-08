@@ -92,9 +92,6 @@ router.post('/signup', async (req, res) => {
     );
     console.log(signup);
 
-        { username: ( req.body.username ) }
-    );
-
     if (signup === null){
         await users.insertOne({
             username: req.body.username,

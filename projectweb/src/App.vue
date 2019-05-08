@@ -8,8 +8,8 @@
     <div class="right menu">
       <a class="item" href="#/login">Login</a>
       <a class="item" href="#/signup">Sign Up</a>
-
     </div>
+    
   </div>
   <router-view/>
   </div>
