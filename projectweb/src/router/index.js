@@ -8,7 +8,7 @@ import SignUp from '@/components/signup'
 import HowTo from '@/components/howto'
 import Forgot from '@/components/forgot'
 import ResetPass from '@/components/resetpass'
-import Preview from '@/components/preview'
+// import Preview from '@/components/preview'
 import Profile from '@/components/profile'
 import ShowBracketPage from '@/components/ShowBracketPage'
 
@@ -62,11 +62,11 @@ export default new Router({
       name: 'ResetPass',
       component: ResetPass
     },
-    {
-      path: '/preview',
-      name: 'Preview',
-      component: Preview
-    },
+    // {
+    //   path: '/preview',
+    //   name: 'Preview',
+    //   component: Preview
+    // },
     {
       path: '/profile',
       name: 'Profile',

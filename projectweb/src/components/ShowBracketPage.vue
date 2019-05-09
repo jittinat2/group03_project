@@ -42,7 +42,13 @@
           </div>
         </div>
         
-          <h1 style="font-size: 70px; color:white; text-align:center;">Winner is : {{Winner}}</h1>
+          <div class="ui segment" style="  background: rgba(36, 32, 245, 0.842); margin-left:12.5% ; margin-right:12.5% ; margin-top: 2.5% ;">
+            <h1 style="font-size: 70px; color:white; text-align:center; color:yellow">
+              <img src="../assets/winner-cup.png" width="60px">  
+                Winner is : {{Winner}}
+              <img src="../assets/winner-cup.png" width="60px"> 
+            </h1>
+          </div>
 
             <div style="margin-left:12.5% ; margin-right:12.5% ; margin-top: 2.5% ; margin-bottom: 5%">
 
@@ -159,7 +165,7 @@ export default {
             // CHECK LOGIN BEFORE GET DETAIL OF BRACKET
             //if(response.data.result == 'Success')
 
-             axios.post('http://localhost:5000/bracket/show' , ShowThisBracket)  
+             axios.post('http://localhost:5000/bracket/show' , '5cd4310548655a5030d626de')  
               .then((response) => {
                 console.log('Show Bracket' )
                 console.log(response.data.tourName)
