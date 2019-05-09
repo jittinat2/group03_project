@@ -11,12 +11,8 @@ app.use(cors());
 const users = require('./routes/api/user');
 const brackets = require('./routes/api/bracket');
 
-app.use(session({
-    secret: 'keyboard cat',
-    resave: false,
-    saveUninitialized: true,
-    cookie: { }
-  }))
+app.use('/profile', posts);
+app.use('/generator', brackets);
 
 app.use('/profile', users);
 app.use('/bracket', brackets);
