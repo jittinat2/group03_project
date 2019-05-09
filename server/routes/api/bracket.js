@@ -2,8 +2,8 @@ const express = require('express');
 const mongodb = require('mongodb');
 const router = express.Router();
 
-//create bracket
-router.post('/create', async (req, res) => {
+//generate bracket
+router.post('/generate', async (req, res) => {
     const brackets = await loadBracketCollection();
     if (await checkLogin(req) === null){
         res.send( {result: "error"} )
@@ -12,26 +12,35 @@ router.post('/create', async (req, res) => {
     await brackets.insertOne({
         username: req.body.username,
         tourName: req.body.tourName,
-        tourType: req.body.tourType,
-        size: req.body.size,
+        tourSize: req.body.tourSize,
         createdAt: new Date() 
     });
     res.send( {result: "Success"} )
-
 })
 
-router.post('/table', async (req, res) => {
+// create save
+router.post('/create', async (req, res) => {
+    const brackets = await loadBracketCollection();
+    /* check to login*/
+    // if (await checkLogin(req) === null){
+    //     res.send( {result: "error"} )
+    //     return
+    // }
+    /* ใช้ _id หาว่าอันไหนของใครแล้ว ค่อย update */ 
+    await brackets.findOneAndUpdate( {_id: new mongodb.ObjectID(req.body._id )},{$set: {Detail:req.body.Detail}} );
+    res.send( {result: "Success"} )
+})
+
+//show own bracket 
+router.post('/show', async (req, res) => {
     const brackets = await loadBracketCollection();
     if (await checkLogin(req) === null){
         res.send( {result: "error"} )
         return
     }
-    await brackets.insertOne({
-        
-    });
-    res.send( {result: "Success"} )
-
+    res.send(await brackets.findOne({_id: new mongodb.ObjectID(req.body._id )}));
 })
+
 
 //delete bracket
 router.post('/delete', async (req, res) => {

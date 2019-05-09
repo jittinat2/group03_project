@@ -24,12 +24,10 @@ export default new Router({
       component: BracketGen
     },
     {
-
       path: '/BracketPage',
       name: 'BracketPage',
       component: BracketPage
     },
-
     {
       path: '/signup',
       name: 'SignUp',

@@ -5,7 +5,9 @@ import App from './App'
 import router from './router'
 import SuiVue from 'semantic-ui-vue';
 import 'semantic-ui-css/semantic.min.css';
+import axios from 'axios'
 
+axios.defaults.withCredentials = true
 Vue.config.productionTip = false
 Vue.use(SuiVue);
 

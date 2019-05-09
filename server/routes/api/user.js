@@ -69,7 +69,7 @@ router.post('/forget', async (req, res) => {
     );
     if (forget === null){ res.send( {result: "Fail"} )}
     else { res.send( {result: "Success"} )}   
-    console.log(forget);
+    //console.log(forget);
     
 });
 
@@ -90,7 +90,7 @@ router.post('/signup', async (req, res) => {
 
         { username:  req.body.username  }
     );
-    console.log(signup);
+    //console.log(signup);
 
     if (signup === null){
         await users.insertOne({
