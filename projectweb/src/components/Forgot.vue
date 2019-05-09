@@ -1,10 +1,5 @@
 <template>
   <div class="repass">
-        <div class="ui black inverted menu">
-      <a class="active item" href="#/">
-        <img src="../assets/logo.png">
-      </a>
-    </div>
     <div class="ui middle aligned center aligned grid" id="test1">
       <div class="column" style="max-width: 450px">
         <div class="ui inverted segment" id="test2">
@@ -19,7 +14,7 @@
               <input name="email" type="text"  v-model="forReset.email" placeholder="Email">
             </div>
           </form>
-           <button class="ui button" type="submit" @click="Reset">Reset Password</button>
+           <button class="ui button" style="margin-top: 10px" type="submit" @click="Reset">Reset Password</button>
         </div>
       </div>
     </div>

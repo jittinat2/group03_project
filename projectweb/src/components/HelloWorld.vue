@@ -1,23 +1,5 @@
 <template>
   <div class="hello">
-    <div class="ui black inverted menu">
-      <a class="active item" href="#/">
-        <img src="../assets/logo.png">
-      </a>
-      <div class="compact right menu" v-if="check != 'Success'">
-        <div class="ui item">
-          <a href="#/login">Login</a>
-        </div>
-        <div class="ui item">
-          <a  href="#/signup">Sign Up</a>
-        </div>
-        </div>
-        <div class="compact right menu" v-else>
-          <div class="ui item">
-          <a href="#/signup" @click="logOut">Log out</a>
-          </div>
-        </div>
-    </div>
     <div class="ui segment" id="test1">
       <div class="ui inverted segment" id="test2">
         <div class="ui grid">
@@ -37,7 +19,7 @@
               <li style="color: white; font-size: 25px" v-if="check != 'Success'">
                 <a href="#/login" style="color: white;">Login to Generated</a>
               </li>
-               <li style="color: white; font-size: 25px" v-else>
+              <li style="color: white; font-size: 25px" v-else>
                 <a href="#/login" style="color: white;">Generated Bracket</a>
               </li>
               <br>
@@ -64,34 +46,49 @@ export default {
   name: "HelloWorld",
   data() {
     return {
-      check: []
+      check: [],
+      uname:"",
     };
   },
   methods: {
-    logOut(){
-      axios
-      .post("http://localhost:5000/profile/logout")
-        .then(response => {
-          console.log(response.data.result);
-        })
-        .catch(error => {
-          console.log(error);
-        });
-      window.location.reload()
-    }
-  },
-  beforeRouteEnter(to, from, next) {
-    axios
-      .post("http://localhost:5000/profile/checkLogin")
-      .then(response => {
-        next(vm => (vm.check = response.data.result));
-        // console.log(this.check)
-        console.log(response.data.result);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }
+  //   logOut() {
+  //     axios
+  //       .post("http://localhost:5000/profile/logout")
+  //       .then(response => {
+  //         console.log(response.result);
+  //       })
+  //       .catch(error => {
+  //         console.log(error);
+  //       });
+  //     window.location.reload();
+  //   }
+  // },
+  // mounted() {
+  //   axios
+  //     .post("http://localhost:5000/profile/checkLogin")
+  //     .then(response => {
+  //       // next(vm => (vm.check = response.data.result));
+  //       // console.log(this.check)
+  //       console.log(response.data);
+  //        this.uname =  response.data.checkSession.username
+  //        console.log(this.uname)
+  //     })
+  //     .catch(error => {
+  //       console.log(error);
+  //     });
+  // },
+  // beforeRouteEnter(to, from, next) {
+  //   axios
+  //     .post("http://localhost:5000/profile/checkLogin")
+  //     .then(response => {
+  //       next(vm => (vm.check = response.data.result));
+  //       // console.log(this.check)
+  //       console.log(response.data.result);
+  //     })
+  //     .catch(error => {
+  //       console.log(error);
+  //     });
+   }
 };
 </script>
 

@@ -1,10 +1,5 @@
 <template>
   <div class="login">
-        <div class="ui black inverted menu">
-      <a class="active item" href="#/">
-        <img src="../assets/logo.png">
-      </a>
-    </div>
     <div class="ui middle aligned center aligned grid" id="test1">
       <div class="column" style="max-width: 450px">
         <div class="ui inverted segment" id="test2">
@@ -42,7 +37,8 @@
             </div>
             
           </form>
-          <button class="ui button" type="submit" @click="signUp">SignUp</button>
+
+          <button class="ui button" style="margin-top: 10px" type="submit" @click="signUp">SignUp</button>
         </div>
       </div>
     </div>
@@ -101,8 +97,6 @@ export default {
       } else {
         alert("A data must be present");
       }
-
-      
     }
   }
 };

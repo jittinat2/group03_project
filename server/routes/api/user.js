@@ -76,10 +76,14 @@ router.post('/forget', async (req, res) => {
 // repassword
 router.post('/rePassword', async (req, res) => {
     let users = await loadUserCollection();
-    res.send (await users.findOneAndUpdate(
+    let re = await users.findOneAndUpdate(
         {username :( req.body.username )}  ,
         {$set: {password :( req.body.password )} }  
-     ))
+     ) 
+     console.log(re);
+     
+     if ( re.value === null ) { res.send( {result: "Fail"} ) } 
+     else { res.send( {result: "Success"} )} 
 
 });
 
