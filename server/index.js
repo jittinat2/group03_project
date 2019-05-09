@@ -17,6 +17,8 @@ app.use(cors({
 const users = require('./routes/api/user');
 const brackets = require('./routes/api/bracket');
 
+// app.use('/profile', posts);
+// app.use('/generator', brackets);
 
 
 app.use(session({
