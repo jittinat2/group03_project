@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <!-- <div class="ui black inverted menu">
+     <!-- <div class="ui black inverted menu">
       <a class="active item" href="#/">
         <img src="./assets/logo.png">
       </a>
@@ -16,7 +16,7 @@
           
         </div>
 
-    </div> -->
+    </div>  -->
     
 
   <router-view/>
@@ -36,7 +36,19 @@ export default {
   },
   components: {
     HelloWorld
-  }
+  },
+  // beforeMount(to, from, next) {
+  //   axios
+  //     .post("http://localhost:5000/profile/checkLogin")
+  //     .then(response => {
+  //       next(vm => (vm.check = response.data.result));
+  //       // console.log(this.check)
+  //       console.log(response.data.result);
+  //     })
+  //     .catch(error => {
+  //       console.log(error);
+  //     });
+  // }
 };
 </script>
 

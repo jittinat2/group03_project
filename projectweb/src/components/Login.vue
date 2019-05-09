@@ -1,5 +1,10 @@
 <template>
   <div class="login">
+    <div class="ui black inverted menu">
+      <a class="active item" href="#/">
+        <img src="../assets/logo.png">
+      </a>
+    </div>
     <div class="ui middle aligned center aligned grid" id="test1">
       <div class="column" style="max-width: 450px">
         <div class="ui inverted segment" id="test2">
@@ -17,8 +22,10 @@
               <a href="#/forgot" style="color: purple; font-size: 10px">Forgot Password?</a>
             </div>
             <div class="left align grid" style="text-align: center">
-              <button class="ui button" type="submit" @click="logIn">Login</button>
-              <button class="ui button" type="submit" href="#/signup">Sign Up</button>
+              <router-link :to="{ path: '/'}">
+              <button class="ui button" type="submit" @click="logIn" href="#/signup">Login</button>
+              <!-- <button class="ui button" type="submit" href="#/signup">Sign Up</button> -->
+              </router-link>
             </div>
           </form>
         </div>
@@ -29,6 +36,7 @@
 
 <script>
 import axios from "axios";
+import router from '../router';
 export default {
   name: "Login",
   data() {
@@ -37,7 +45,8 @@ export default {
         username: "",
         password: ""
       },
-      session: ""
+      session: "",
+      check: []
     };
   },
   methods: {
@@ -46,12 +55,11 @@ export default {
         .post("http://localhost:5000/profile/login", this.Account)
         .then(response => {
           console.log(response.data.result);
-      
         })
         .catch(error => {
           console.log(error);
         });
-      
+            // router.push({ name:'HelloWorld'})
     },
     // check(){
     //   axios.post("http://localhost:5000/profile/checkLogin")
@@ -62,9 +70,31 @@ export default {
     //     console.log(error);
     //   });
     // }
+      
   },
+  // beforeRouteEnter(to, from, next) {
+  //   axios
+  //     .post("http://localhost:5000/profile/checkLogin")
+  //     .then(response => {
+  //       next(vm => (vm.check = response.data.result));
+  //       // console.log(this.check)
+  //       console.log(response.data.result);
+  //     })
+  //     .catch(error => {
+  //       console.log(error);
+  //     });
+  // },
   mounted() {
-    
+    axios
+      .post("http://localhost:5000/profile/checkLogin")
+      .then(response => {
+        next(vm => (vm.check = response.data.result));
+        // console.log(this.check)
+        console.log(response.data.result);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 };
 </script>

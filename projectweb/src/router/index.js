@@ -7,6 +7,7 @@ import Login from '@/components/login'
 import SignUp from '@/components/signup'
 import HowTo from '@/components/howto'
 import Forgot from '@/components/forgot'
+import ResetPass from '@/components/resetpass'
 
 
 Vue.use(Router)
@@ -47,6 +48,11 @@ export default new Router({
       path: '/forgot',
       name: 'Forgot',
       component: Forgot
+    },
+    {
+      path: '/resetpass',
+      name: 'ResetPass',
+      component: ResetPass
     },
   ]
 })

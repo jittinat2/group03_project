@@ -1,5 +1,10 @@
 <template>
   <div class="repass">
+        <div class="ui black inverted menu">
+      <a class="active item" href="#/">
+        <img src="../assets/logo.png">
+      </a>
+    </div>
     <div class="ui middle aligned center aligned grid" id="test1">
       <div class="column" style="max-width: 450px">
         <div class="ui inverted segment" id="test2">
@@ -46,10 +51,10 @@ export default {
           console.log(error);
         });
       let newName = {
-        usrname: this.forReset.usrname
+        usrname: this.forReset.username
       }
       console.log(newName)
-      router.push({ name:'ResetPass', params:{newName} })
+      router.push({ name:'ResetPass', params: {newName} })
       
       }else
       {

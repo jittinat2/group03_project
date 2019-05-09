@@ -34,11 +34,11 @@
             <h3 style="color: pink; font-size: 40px">Outline</h3>
             <br>
             <ul>
-              <li style="color: white; font-size: 25px" v-if="check == 'Success'">
+              <li style="color: white; font-size: 25px" v-if="check != 'Success'">
                 <a href="#/login" style="color: white;">Login to Generated</a>
               </li>
                <li style="color: white; font-size: 25px" v-else>
-                <a href="#/login" style="color: white;">Generated</a>
+                <a href="#/login" style="color: white;">Generated Bracket</a>
               </li>
               <br>
               <br>
@@ -48,7 +48,7 @@
               <br>
               <br>
               <li style="color: white; font-size: 25px">
-                <a href="#/" style="color: white;">How to use</a>
+                <a href="#/howto" style="color: white;">How to use</a>
               </li>
             </ul>
           </div>
@@ -85,6 +85,7 @@ export default {
       .post("http://localhost:5000/profile/checkLogin")
       .then(response => {
         next(vm => (vm.check = response.data.result));
+        // console.log(this.check)
         console.log(response.data.result);
       })
       .catch(error => {
