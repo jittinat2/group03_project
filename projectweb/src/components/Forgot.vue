@@ -3,17 +3,18 @@
     <div class="ui middle aligned center aligned grid" id="test1">
       <div class="column" style="max-width: 450px">
         <div class="ui inverted segment" id="test2">
-          <h2>Forgot Password</h2>
-          <div class="field" style="text-align: left">
-              <label style="color: white; font-size: 15px ">Username</label>
-              <input name="username" type="text" v-model="Account.username" placeholder="Username">
+            <h2> Forgot password </h2>
+          <form class="ui form">
+            <div class="field" style="text-align: left">
+              <label style="color: white; font-size: 15px">Username</label>
+              <input name="username" type="text" placeholder="Username">
             </div>
             <div class="field" style="text-align: left">
               <label style="color: white; font-size: 15px">Email</label>
-              <input name="email" type="text" v-model="Account.email" placeholder="Email">
+              <input name="email" type="text"  placeholder="Email">
             </div>
-          <form class="ui form"></form>
-          <button class="ui button" type="submit" >Reset Password</button>
+          </form>
+           <button class="ui button" type="submit" @click="Reset">Reset Password</button>
         </div>
       </div>
     </div>
@@ -23,13 +24,20 @@
 <script>
 import axios from "axios";
 export default {
-  name: "Forgot",
-  data() {}
+  name: "HelloWorld",
+  data(){
+    
+  }
 }
 </script>
 
 <style>
-
+#test1 {
+  background: rgba(15, 15, 15, 0);
+}
+#test2 {
+  background: rgba(15, 15, 15, 0.8);
+}
 </style>
 
 
