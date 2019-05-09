@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 style="font-size: 100px; color:white;">{{ msg }}</h1>
+    <h1 style="font-size: 70px; color:white; text-align:center;">{{ msg }}</h1>
     <!-- input Zone -->
     <div>
 
@@ -62,7 +62,7 @@
 
           </div>
       </div>
-{{tour_name}} : {{tour_size}} : {{check.checkSession}} 
+
     </div>  
   </div>
 </template>
