@@ -13,7 +13,7 @@
           <div class="six wide column">
             <br>
             <br>
-            <h3 style="color: pink; font-size: 40px">Outline</h3>
+            <h3 style="color: pink; font-size: 50px">Outline</h3>
             <br>
             <ul>
               <li style="color: white; font-size: 25px" v-if="check != 'Success'">
@@ -47,48 +47,10 @@ export default {
   data() {
     return {
       check: [],
-      uname:"",
+      uname: ""
     };
   },
-  methods: {
-  //   logOut() {
-  //     axios
-  //       .post("http://localhost:5000/profile/logout")
-  //       .then(response => {
-  //         console.log(response.result);
-  //       })
-  //       .catch(error => {
-  //         console.log(error);
-  //       });
-  //     window.location.reload();
-  //   }
-  // },
-  // mounted() {
-  //   axios
-  //     .post("http://localhost:5000/profile/checkLogin")
-  //     .then(response => {
-  //       // next(vm => (vm.check = response.data.result));
-  //       // console.log(this.check)
-  //       console.log(response.data);
-  //        this.uname =  response.data.checkSession.username
-  //        console.log(this.uname)
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     });
-  // },
-  // beforeRouteEnter(to, from, next) {
-  //   axios
-  //     .post("http://localhost:5000/profile/checkLogin")
-  //     .then(response => {
-  //       next(vm => (vm.check = response.data.result));
-  //       // console.log(this.check)
-  //       console.log(response.data.result);
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     });
-   }
+  methods: {}
 };
 </script>
 

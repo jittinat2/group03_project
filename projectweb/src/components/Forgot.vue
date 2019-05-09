@@ -3,18 +3,32 @@
     <div class="ui middle aligned center aligned grid" id="test1">
       <div class="column" style="max-width: 450px">
         <div class="ui inverted segment" id="test2">
-            <h2> Forgot password </h2>
+          <h2>Forgot password</h2>
           <form class="ui form">
             <div class="field" style="text-align: left">
               <label style="color: white; font-size: 15px">Username</label>
-              <input name="username" type="text" v-model="forReset.username" placeholder="Username">
+              <div class="ui left icon input">
+                <input
+                  name="username"
+                  type="text"
+                  v-model="forReset.username"
+                  placeholder="Username"
+                >
+                <i class="user icon"></i>
+              </div>
             </div>
             <div class="field" style="text-align: left">
               <label style="color: white; font-size: 15px">Email</label>
-              <input name="email" type="text"  v-model="forReset.email" placeholder="Email">
+              <div class="ui left icon input">
+                <input name="email" type="text" v-model="forReset.email" placeholder="Email">
+                <i class="envelope icon"></i>
+              </div>
             </div>
           </form>
-           <button class="ui button" style="margin-top: 10px" type="submit" @click="Reset">Reset Password</button>
+          <button class="ui button" style="margin-top: 10px" type="submit" @click="Reset">
+            <i class="redo icon"></i>
+            Reset Password
+          </button>
         </div>
       </div>
     </div>
@@ -23,41 +37,39 @@
 
 <script>
 import axios from "axios";
-import router from '../router'
+import router from "../router";
 export default {
   name: "HelloWorld",
-  data(){
-    return{
+  data() {
+    return {
       forReset: {
-        username:"",
+        username: "",
         email: ""
       }
-    }
+    };
   },
   methods: {
-    Reset(){
-      if(this.forReset.username != "" && this.forReset.email != ""){
-      axios
-      .post("http://localhost:5000/profile/forget" , this.forReset)
-        .then(response => {
-          console.log(response.data.result);
-        })
-        .catch(error => {
-          console.log(error);
-        });
-      let newName = {
-        usrname: this.forReset.username
-      }
-      console.log(newName)
-      router.push({ name:'ResetPass', params: {newName} })
-      
-      }else
-      {
-        alert("A data must be present")
+    Reset() {
+      if (this.forReset.username != "" && this.forReset.email != "") {
+        axios
+          .post("http://localhost:5000/profile/forget", this.forReset)
+          .then(response => {
+            console.log(response.data.result);
+          })
+          .catch(error => {
+            console.log(error);
+          });
+        let newName = {
+          usrname: this.forReset.username
+        };
+        console.log(newName);
+        router.push({ name: "ResetPass", params: { newName } });
+      } else {
+        alert("A data must be present");
       }
     }
   }
-}
+};
 </script>
 
 <style>
@@ -66,6 +78,10 @@ export default {
 }
 #test2 {
   background: rgba(15, 15, 15, 0.8);
+}
+h2 {
+  color: white;
+  font-size: 30px;
 }
 </style>
 

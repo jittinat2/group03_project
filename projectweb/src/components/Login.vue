@@ -7,19 +7,39 @@
           <form class="ui form">
             <div class="field" style="text-align: left">
               <label style="color: white; font-size: 15px ">Username</label>
-              <input name="username" type="text" v-model="Account.username" placeholder="Username">
+              <div class="ui left icon input">
+                <input
+                  name="username"
+                  type="text"
+                  v-model="Account.username"
+                  placeholder="Username"
+                >
+                <i class="address card icon"></i>
+              </div>
             </div>
             <div class="field" style="text-align: left">
               <label style="color: white; font-size: 15px ">Password</label>
-              <input name="password" type="text" v-model="Account.password" placeholder="Password">
+              <div class="ui left icon input">
+                <input
+                  name="password"
+                  type="text"
+                  v-model="Account.password"
+                  placeholder="Password"
+                >
+                <i class="user icon"></i>
+              </div>
             </div>
             <div style="text-align: right" id="test1">
-              <a href="#/forgot" style="color: white; font-size: 15px">Forgot Password?</a>
+              <a href="#/forgot" style="color: white; font-size: 15px">Forgot Password</a>
+              <i class="question icon"></i>
             </div>
             <div class="left align grid" style="text-align: center">
               <router-link :to="{ path: '/'}">
-              <button class="ui button" type="submit" @click="logIn" >Login</button>
-              <!-- <button class="ui button" type="submit" href="#/signup">Sign Up</button> -->
+                <button class="ui button" type="submit" @click="logIn">
+                  <i class="sign-in icon"></i>
+                  Login
+                </button>
+                <!-- <button class="ui button" type="submit" href="#/signup">Sign Up</button> -->
               </router-link>
             </div>
           </form>
@@ -31,7 +51,7 @@
 
 <script>
 import axios from "axios";
-import router from '../router';
+import router from "../router";
 export default {
   name: "Login",
   data() {
@@ -50,14 +70,14 @@ export default {
         .post("http://localhost:5000/profile/login", this.Account)
         .then(response => {
           console.log(response.data.result);
-                  this.$router.go("/")
+          this.$router.go("/");
         })
         .catch(error => {
           console.log(error);
         });
 
-            // router.push({ name:'HelloWorld'})
-    },
+      // router.push({ name:'HelloWorld'})
+    }
     // check(){
     //   axios.post("http://localhost:5000/profile/checkLogin")
     //   .then(response => {
@@ -67,8 +87,7 @@ export default {
     //     console.log(error);
     //   });
     // }
-      
-  },
+  }
   // beforeRouteEnter(to, from, next) {
   //   axios
   //     .post("http://localhost:5000/profile/checkLogin")

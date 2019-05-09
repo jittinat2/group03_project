@@ -5,17 +5,25 @@
         <img src="./assets/logo.png">
       </a>
       <div class="compact right menu" v-if="check.result != 'Success'">
-        <div class="ui item">
-          <a href="#/login">Login</a>
-        </div>
-        <div class="ui item">
-          <i class="sign-out"></i>
-          <a href="#/signup">Sign Up</a>
-        </div>
+        <router-link :to="{ path: '/login'}">
+          <div class="ui item">
+            <button class="ui invert black basic button" href="#/login">
+              <i class="inverted sign-in icon"></i>
+              <a style="color: white;">Login</a>
+            </button>
+          </div>
+        </router-link>
+        <router-link :to="{ path: '/signup'}">
+          <div class="ui item">
+            <button class="ui invert black basic button" href="#/signup">
+              <i class="inverted user plus icon"></i>
+              <a style="color: white;">Sign Up</a>
+            </button>
+          </div>
+        </router-link>
       </div>
       <div class="compact right menu" v-else>
         <div class="ui item">
-          <i class="user"></i>
           <a>Hello !! {{profile.profilename}}</a>
         </div>
         <div class="ui item">
@@ -38,7 +46,7 @@ export default {
     return {
       check: [],
       uname: "",
-      profile:[]
+      profile: []
     };
   },
   components: {
@@ -69,13 +77,13 @@ export default {
         this.check = response.data;
         console.log(response.data);
         let ob = {
-          username:this.uname
-        }
+          username: this.uname
+        };
         axios
-          .post("http://localhost:5000/profile/AUser" , ob)
+          .post("http://localhost:5000/profile/AUser", ob)
           .then(response => {
             console.log(response.data);
-            this.profile = response.data
+            this.profile = response.data;
           })
           .catch(error => {
             console.log(error);
@@ -104,5 +112,8 @@ export default {
 body {
   background-image: url("./assets/party.png") !important;
   background-size: cover !important;
+}
+#test1 {
+  background: rgba(15, 15, 15, 0);
 }
 </style>
