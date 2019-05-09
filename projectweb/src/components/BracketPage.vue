@@ -28,21 +28,35 @@
                   <div class="ui inverted segment" v-if="i>4" style="margin-top:480px" id='transparent'></div>
 
                   <button class="ui active white fluid button"  style="height:35px" 
-                          @click="clicked(Detail[i-1][(j*2)-2].teamName , i , j)"> {{ Detail[i-1][(j*2)-2].teamName }} 
+                          @click="clicked(Detail[i-1][(j*2)-2].teamName , i , j , (j*2)-1)"> {{ Detail[i-1][(j*2)-2].teamName }} 
                   </button> <!-- TEAM {{ (j*2)-1 }} ,,,, Detail[i][j]-->
                   <button class="ui active blue fluid button" style="height:35px" 
-                          @click="clicked(Detail[i-1][(j*2)-1].teamName , i , j)"> {{ Detail[i-1][(j*2)-1].teamName }}
+                          @click="clicked(Detail[i-1][(j*2)-1].teamName , i , j , (j*2))"> {{ Detail[i-1][(j*2)-1].teamName }}
                   </button> <!-- TEAM {{ j*2 }} -->
                 </div>
               </div>
           </div>
         </div>
-            <div style="margin-left:12.5% ; margin-right:12.5% ; margin-top: 5% ">
+        
+            <div style="margin-left:12.5% ; margin-right:12.5% ; margin-top: 2.5% ; margin-bottom: 5%">
+
+              <div class="ui inverted segment">
+                <h1>Team name setting</h1>
+                <div class="ui input" v-for="k in  parseInt(this.$route.params.newBracket.tour_size)" v-bind:key="k">
+                  <div class="ui inverted segment input" style="background: rgba(255, 247, 247, 0.05); margin:18px;">
+                    <label style="margin:18px ; font-size:20px">Team{{k}}</label><input type="text" placeholder="Enter Team Name" v-model="Detail[0][k-1].teamName"> 
+                  </div>
+                </div> 
+              </div>
+
+              
+              <br><br>
               <router-link :to="{ path: '/BracketGenerator/'}"><button class="ui brown button" id='buttonBottom'>Edit</button></router-link>
               <router-link :to="{ path: '/BracketGenerator/'}"><button class="ui primary button" id='buttonBottom'>Save</button></router-link>
+              
             </div>
 
-         <br><br>{{$route.params.newBracket}}<br><br>{{Detail}}
+         <!-- <br><br>{{$route.params.newBracket}}<br><br>{{Detail}} -->
     </div>
 </template>
 
@@ -52,7 +66,7 @@ export default {
   name: "HelloWorld",   
   data() {
     return {
-      msg: "Bracket Page",
+      msg: "Tournament Bracket Page",
       divNameOfGrid: '',     //for create horizontal grid (ex. 3 round --> 3 horizontal grids)
      // numOfRound:[{_id:'1',}],
       numOfMatch: 0,
@@ -61,27 +75,42 @@ export default {
      
      Detail:[
         [{teamName:'Round1_match1',status:''},{teamName:'Round1_enemy_match_1',status:''},{teamName:'Round1_match2',status:''},{teamName:'Round1_enemy_match_2',status:''},{teamName:'Round1_match3',status:''},{teamName:'Round1_enemy_match_3',status:''},{teamName:'Round1_match4',status:''},{teamName:'Round1_enemy_match_4',status:''},{teamName:'Round1_match5',status:''},{teamName:'Round1_enemy_match_5',status:''},{teamName:'Round1_match6',status:''},{teamName:'Round1_enemy_match_6',status:''},{teamName:'Round1_match7',status:''},{teamName:'Round1_enemy_match_7',status:''},{teamName:'Round1_match8',status:''},{teamName:'Round1_enemy_match_8',status:''},{teamName:'Round1_match9',status:''},{teamName:'Round1_enemy_match_9',status:''},{teamName:'Round1_match10',status:''},{teamName:'Round1_enemy_match_10',status:''},{teamName:'Round1_match11',status:''},{teamName:'Round1_enemy_match_11',status:''},{teamName:'Round1_match12',status:''},{teamName:'Round1_enemy_match_12',status:''},{teamName:'Round1_match13',status:''},{teamName:'Round1_enemy_match_13',status:''},{teamName:'Round1_match14',status:''},{teamName:'Round1_enemy_match_14',status:''},{teamName:'Round1_match15',status:''},{teamName:'Round1_enemy_match_15',status:''},{teamName:'Round1_match16',status:''},{teamName:'Round1_enemy_match_16',status:''},],
-        [{teamName:'Round2_match1',status:''},{teamName:'Round2_enemy_match_1',status:''},{teamName:'Round2_match2',status:''},{teamName:'Round2_enemy_match_2',status:''},{teamName:'Round2_match3',status:''},{teamName:'Round2_enemy_match_3',status:''},{teamName:'Round2_match4',status:''},{teamName:'Round2_enemy_match_4',status:''},{teamName:'Round2_match5',status:''},{teamName:'Round2_enemy_match_5',status:''},{teamName:'Round2_match6',status:''},{teamName:'Round2_enemy_match_6',status:''},{teamName:'Round2_match7',status:''},{teamName:'Round2_enemy_match_7',status:''},{teamName:'Round2_match8',status:''},{teamName:'Round2_enemy_match_8',status:''},],
-        [{teamName:'Round3_match1',status:''},{teamName:'Round3_enemy_match_1',status:''},{teamName:'Round3_match2',status:''},{teamName:'Round3_enemy_match_2',status:''},{teamName:'Round3_match3',status:''},{teamName:'Round3_enemy_match_3',status:''},{teamName:'Round3_match4',status:''},{teamName:'Round3_enemy_match_4',status:''}],
-        [{teamName:'Round4_match1',status:''},{teamName:'Round4_enemy_match_1',status:''},{teamName:'Round4_match2',status:''},{teamName:'Round4_enemy_match_2',status:''}],
-        [{teamName:'Round5_match1',status:''},{teamName:'Round5_enemy_match_1',status:''}],
+        [{teamName:'',status:''},{teamName:'',status:''},{teamName:'',status:''},{teamName:'',status:''},{teamName:'',status:''},{teamName:'',status:''},{teamName:'',status:''},{teamName:'',status:''},{teamName:'',status:''},{teamName:'',status:''},{teamName:'',status:''},{teamName:'',status:''},{teamName:'',status:''},{teamName:'',status:''},{teamName:'',status:''},{teamName:'',status:''},{teamName:'',status:''},],// [{teamName:'Round2_match1',status:''},{teamName:'Round2_enemy_match_1',status:''},{teamName:'Round2_match2',status:''},{teamName:'Round2_enemy_match_2',status:''},{teamName:'Round2_match3',status:''},{teamName:'Round2_enemy_match_3',status:''},{teamName:'Round2_match4',status:''},{teamName:'Round2_enemy_match_4',status:''},{teamName:'Round2_match5',status:''},{teamName:'Round2_enemy_match_5',status:''},{teamName:'Round2_match6',status:''},{teamName:'Round2_enemy_match_6',status:''},{teamName:'Round2_match7',status:''},{teamName:'Round2_enemy_match_7',status:''},{teamName:'Round2_match8',status:''},{teamName:'Round2_enemy_match_8',status:''},],
+        [{teamName:'',status:''},{teamName:'',status:''},{teamName:'',status:''},{teamName:'',status:''},{teamName:'',status:''},{teamName:'',status:''},{teamName:'',status:''},{teamName:'',status:''},],// [{teamName:'Round3_match1',status:''},{teamName:'Round3_enemy_match_1',status:''},{teamName:'Round3_match2',status:''},{teamName:'Round3_enemy_match_2',status:''},{teamName:'Round3_match3',status:''},{teamName:'Round3_enemy_match_3',status:''},{teamName:'Round3_match4',status:''},{teamName:'Round3_enemy_match_4',status:''}],
+        [{teamName:'',status:''},{teamName:'',status:''},{teamName:'',status:''},{teamName:'',status:''},],// [{teamName:'Round4_match1',status:''},{teamName:'Round4_enemy_match_1',status:''},{teamName:'Round4_match2',status:''},{teamName:'Round4_enemy_match_2',status:''}],
+        [{teamName:'',status:''},{teamName:'',status:''},],// {teamName:'Round5_match1',status:''},{teamName:'Round5_enemy_match_1',status:''}],
       ],
 
     };
   },
   methods: {
-    clicked(teamName , round , match){
+    clicked(teamName , round , match , orderOfbutton){
       var Match_RoundUp = Math.round(match/2) // Detail[round-1][(match*2)-2] ,,, Detail[round-1][(match*2)-1]
+      // var order = orderOfbutton;
       // odd numver OF match go to up button ,,, even number OF match go to down button
-      alert(teamName + ', Round : ' + round + ', Match : ' + match + ', Match_RoundUp : ' + Match_RoundUp)
-      if(match%2 == 0){
-        console.log('even go to down button')
-      }
-      else{
-        console.log('odd go to up button')
-      }
-      // this.Detail[round][match] = this.Detail[round+1][match]
-      console.log(this.Detail)
+      alert(teamName + ', Round : ' + round + ', Match : ' + match + ', Match_RoundUp : ' + Match_RoundUp + ', orderOfButton : ' + orderOfbutton)
+      // if((orderOfbutton % 4) >= 1 && (orderOfbutton % 4) <= 2){
+      //   console.log('up button')
+      //   // this.Detail[round][0].teamName = this.Detail[round-1][orderOfButton-1].teamName  0
+      //   // this.Detail[round][0].teamName = this.Detail[round-1][orderOfButton-1].teamName  1
+      //   // ===>><<==
+        
+      //   // this.Detail[round][2].teamName = this.Detail[round-1][orderOfButton-1].teamName  4
+      //   // this.Detail[round][2].teamName = this.Detail[round-1][orderOfButton-1].teamName  5
+      // }
+      // else{
+      //   console.log('down button')
+      //   // this.Detail[round][1].teamName = this.Detail[round-1][orderOfButton-1].teamName  2
+      //   // this.Detail[round][1].teamName = this.Detail[round-1][orderOfButton-1].teamName  3
+        
+      //   // this.Detail[round][3].teamName = this.Detail[round-1][orderOfButton-1].teamName  2
+      //   // this.Detail[round][3].teamName = this.Detail[round-1][orderOfButton-1].teamName  3
+      // }
+      console.log(orderOfbutton)
+      this.Detail[round][match-1].teamName = this.Detail[round-1][orderOfbutton-1].teamName
+      // console.log(this.Detail[round][(match*2)-2].teamName)
+
+      // WE DON'T PRESS AND CHANGE ALL LINE OF TOUR ,, BECAUSE THAT TEAM MAYBE NOT WIN ALL LINE
     }
     // Divived 2 and Round-up   ,,, 
     // EX. ([i][j]) === > [1][1] VS [1][2]

@@ -101,7 +101,7 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Bracket Generator',
+      msg: 'Tournament Generator',
       tour_name: null,
       //tour_type: null,
       tour_size: null, 
@@ -130,7 +130,7 @@ export default {
             //   })
             //console.log(newBracket)
 
-            router.push({ name:'BracketPage', params:{newBracket} })
+            router.push({ name:'BracketPage', params:{newBracket} })  // name : namePage , params:{ตัวแปร}
           }
       }
   },

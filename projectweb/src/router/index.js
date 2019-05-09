@@ -36,7 +36,7 @@ export default new Router({
       component: SignUp
     },
     {
-      path: 'howto',
+      path: '/howto',
       name: 'HowTo',
       component: HowTo
     },

@@ -27,7 +27,7 @@
               <br>
               <br>
               <li style="color: white; font-size: 25px">
-                <a href="#/" style="color: white;">How to use</a>
+                <a href="#/howto" style="color: white;">How to use</a>
               </li>
             </ul>
           </div>
