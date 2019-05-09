@@ -27,8 +27,12 @@
                   <div class="ui inverted segment" v-if="i>3" style="margin-top:240px" id='transparent'></div>               
                   <div class="ui inverted segment" v-if="i>4" style="margin-top:480px" id='transparent'></div>
 
-                  <button class="ui active white fluid button"  style="height:35px">{{ Result[i-1][(j*2)-2].teamName }}</button> <!-- TEAM {{ (j*2)-1 }} ,,,, Result[i][j]-->
-                  <button class="ui active blue fluid button" style="height:35px">{{ Result[i-1][(j*2)-1].teamName }}</button> <!-- TEAM {{ j*2 }} -->
+                  <button class="ui active white fluid button"  style="height:35px" 
+                          @click="clicked(Detail[i-1][(j*2)-2].teamName , i , j)"> {{ Detail[i-1][(j*2)-2].teamName }} 
+                  </button> <!-- TEAM {{ (j*2)-1 }} ,,,, Detail[i][j]-->
+                  <button class="ui active blue fluid button" style="height:35px" 
+                          @click="clicked(Detail[i-1][(j*2)-1].teamName , i , j)"> {{ Detail[i-1][(j*2)-1].teamName }}
+                  </button> <!-- TEAM {{ j*2 }} -->
                 </div>
               </div>
           </div>
@@ -38,7 +42,7 @@
               <router-link :to="{ path: '/BracketGenerator/'}"><button class="ui primary button" id='buttonBottom'>Save</button></router-link>
             </div>
 
-         <br><br>{{$route.params.newBracket}}<br><br>{{Result}}
+         <br><br>{{$route.params.newBracket}}<br><br>{{Detail}}
     </div>
 </template>
 
@@ -55,17 +59,30 @@ export default {
       numOfRound: 0,
       numOfCreateMatch:[],
      
-     Result:[
-        [{teamName:'testRound1',status:''},{teamName:'testRound1_enemy_match_1',status:''},{teamName:'testRound1',status:''},{teamName:'testRound1_enemy_match_2',status:''},{teamName:'testRound1',status:''},{teamName:'testRound1_enemy_match_3',status:''},{teamName:'testRound1',status:''},{teamName:'testRound1_enemy_match_4',status:''},{teamName:'testRound1',status:''},{teamName:'testRound1_enemy_match_5',status:''},{teamName:'testRound1',status:''},{teamName:'testRound1_enemy_match_6',status:''},{teamName:'testRound1',status:''},{teamName:'testRound1_enemy_match_7',status:''},{teamName:'testRound1',status:''},{teamName:'testRound1_enemy_match_8',status:''},{teamName:'testRound1',status:''},{teamName:'testRound1',status:''},{teamName:'testRound1',status:''},{teamName:'testRound1',status:''},{teamName:'testRound1',status:''},{teamName:'testRound1',status:''},{teamName:'testRound1',status:''},{teamName:'testRound1',status:''},{teamName:'testRound1',status:''},{teamName:'testRound1',status:''},{teamName:'testRound1',status:''},{teamName:'testRound1',status:''},{teamName:'testRound1',status:''},{teamName:'testRound1',status:''},{teamName:'testRound1',status:''},{teamName:'testRound1',status:''},],
-        [{teamName:'testRound2',status:''},{teamName:'testRound2_enemy_match_1',status:''},{teamName:'testRound2',status:''},{teamName:'testRound2_enemy_match_2',status:''},{teamName:'testRound2',status:''},{teamName:'testRound2_enemy_match_3',status:''},{teamName:'testRound2',status:''},{teamName:'testRound2_enemy_match_4',status:''},{teamName:'testRound2',status:''},{teamName:'testRound2_enemy_match_5',status:''},{teamName:'testRound2',status:''},{teamName:'testRound2_enemy_match_6',status:''},{teamName:'testRound2',status:''},{teamName:'testRound2_enemy_match_7',status:''},{teamName:'testRound2',status:''},{teamName:'testRound2_enemy_match_8',status:''},],
-        [{teamName:'testRound3',status:''},{teamName:'testRound3_enemy_match_1',status:''},{teamName:'testRound3',status:''},{teamName:'testRound3_enemy_match_2',status:''},{teamName:'testRound3',status:''},{teamName:'testRound3_enemy_match_3',status:''},{teamName:'testRound3',status:''},{teamName:'testRound3_enemy_match_4',status:''}],
-        [{teamName:'testRound4',status:''},{teamName:'testRound4_enemy_match_1',status:''},{teamName:'testRound4',status:''},{teamName:'testRound4_enemy_match_2',status:''}],
-        [{teamName:'testRound5',status:''},{teamName:'testRound5_enemy_match_1',status:''}],
+     Detail:[
+        [{teamName:'Round1_match1',status:''},{teamName:'Round1_enemy_match_1',status:''},{teamName:'Round1_match2',status:''},{teamName:'Round1_enemy_match_2',status:''},{teamName:'Round1_match3',status:''},{teamName:'Round1_enemy_match_3',status:''},{teamName:'Round1_match4',status:''},{teamName:'Round1_enemy_match_4',status:''},{teamName:'Round1_match5',status:''},{teamName:'Round1_enemy_match_5',status:''},{teamName:'Round1_match6',status:''},{teamName:'Round1_enemy_match_6',status:''},{teamName:'Round1_match7',status:''},{teamName:'Round1_enemy_match_7',status:''},{teamName:'Round1_match8',status:''},{teamName:'Round1_enemy_match_8',status:''},{teamName:'Round1_match9',status:''},{teamName:'Round1_enemy_match_9',status:''},{teamName:'Round1_match10',status:''},{teamName:'Round1_enemy_match_10',status:''},{teamName:'Round1_match11',status:''},{teamName:'Round1_enemy_match_11',status:''},{teamName:'Round1_match12',status:''},{teamName:'Round1_enemy_match_12',status:''},{teamName:'Round1_match13',status:''},{teamName:'Round1_enemy_match_13',status:''},{teamName:'Round1_match14',status:''},{teamName:'Round1_enemy_match_14',status:''},{teamName:'Round1_match15',status:''},{teamName:'Round1_enemy_match_15',status:''},{teamName:'Round1_match16',status:''},{teamName:'Round1_enemy_match_16',status:''},],
+        [{teamName:'Round2_match1',status:''},{teamName:'Round2_enemy_match_1',status:''},{teamName:'Round2_match2',status:''},{teamName:'Round2_enemy_match_2',status:''},{teamName:'Round2_match3',status:''},{teamName:'Round2_enemy_match_3',status:''},{teamName:'Round2_match4',status:''},{teamName:'Round2_enemy_match_4',status:''},{teamName:'Round2_match5',status:''},{teamName:'Round2_enemy_match_5',status:''},{teamName:'Round2_match6',status:''},{teamName:'Round2_enemy_match_6',status:''},{teamName:'Round2_match7',status:''},{teamName:'Round2_enemy_match_7',status:''},{teamName:'Round2_match8',status:''},{teamName:'Round2_enemy_match_8',status:''},],
+        [{teamName:'Round3_match1',status:''},{teamName:'Round3_enemy_match_1',status:''},{teamName:'Round3_match2',status:''},{teamName:'Round3_enemy_match_2',status:''},{teamName:'Round3_match3',status:''},{teamName:'Round3_enemy_match_3',status:''},{teamName:'Round3_match4',status:''},{teamName:'Round3_enemy_match_4',status:''}],
+        [{teamName:'Round4_match1',status:''},{teamName:'Round4_enemy_match_1',status:''},{teamName:'Round4_match2',status:''},{teamName:'Round4_enemy_match_2',status:''}],
+        [{teamName:'Round5_match1',status:''},{teamName:'Round5_enemy_match_1',status:''}],
       ],
 
     };
   },
   methods: {
+    clicked(teamName , round , match){
+      var Match_RoundUp = Math.round(match/2) // Detail[round-1][(match*2)-2] ,,, Detail[round-1][(match*2)-1]
+      // odd numver OF match go to up button ,,, even number OF match go to down button
+      alert(teamName + ', Round : ' + round + ', Match : ' + match + ', Match_RoundUp : ' + Match_RoundUp)
+      if(match%2 == 0){
+        console.log('even go to down button')
+      }
+      else{
+        console.log('odd go to up button')
+      }
+      // this.Detail[round][match] = this.Detail[round+1][match]
+      console.log(this.Detail)
+    }
     // Divived 2 and Round-up   ,,, 
     // EX. ([i][j]) === > [1][1] VS [1][2]
     // get j of 2 array (1 and 2) 
@@ -96,6 +113,8 @@ export default {
     this.numOfRound = round
     console.log("numOfMatch : " + this.numOfMatch)
     console.log("numOfCreateMatch : " + this.numOfCreateMatch)
+
+
   },
 };
 </script>
