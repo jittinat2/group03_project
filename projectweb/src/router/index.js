@@ -6,6 +6,7 @@ import BracketPage from '@/components/BracketPage'
 import Login from '@/components/login'
 import SignUp from '@/components/signup'
 import HowTo from '@/components/howto'
+import Forgot from '@/components/forgot'
 
 
 Vue.use(Router)
@@ -23,19 +24,17 @@ export default new Router({
       component: BracketGen
     },
     {
-
       path: '/BracketPage',
       name: 'BracketPage',
       component: BracketPage
     },
-
     {
       path: '/signup',
       name: 'SignUp',
       component: SignUp
     },
     {
-      path: 'howto',
+      path: '/howto',
       name: 'HowTo',
       component: HowTo
     },
@@ -43,6 +42,11 @@ export default new Router({
       path: '/login',
       name: 'Login',
       component: Login
+    },
+    {
+      path: '/forgot',
+      name: 'Forgot',
+      component: Forgot
     },
   ]
 })

@@ -1,16 +1,24 @@
 <template>
   <div id="app">
-    <div class="ui black inverted menu">
+    <!-- <div class="ui black inverted menu">
       <a class="active item" href="#/">
         <img src="./assets/logo.png">
       </a>
 
-    <div class="right menu">
-      <a class="item" href="#/login">Login</a>
-      <a class="item" href="#/signup">Sign Up</a>
+      <div class="compact right menu">
 
-    </div>
-  </div>
+          <!-- <div class="ui item">
+            <a v-if="check != 'Success'" href="#/login">Login</a>
+            </div>
+            <div class="ui item">
+          <a  v-if="check != 'Success'" href="#/signup">Sign Up</a>
+            </div> 
+          
+        </div>
+
+    </div> -->
+    
+
   <router-view/>
   </div>
 </template>
@@ -28,17 +36,6 @@ export default {
   },
   components: {
     HelloWorld
-  },
-  mounted() {
-    axios
-      .post("http://localhost:5000/profile/checklogin", this.Account)
-      .then(response => {
-        console.log(response.data.result);
-        this.check = response.data.result;
-      })
-      .catch(error => {
-        console.log(error);
-      });
   }
 };
 </script>

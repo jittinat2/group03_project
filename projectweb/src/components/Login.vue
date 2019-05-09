@@ -18,7 +18,7 @@
             </div>
             <div class="left align grid" style="text-align: center">
               <button class="ui button" type="submit" @click="logIn">Login</button>
-                        <button class="ui button"  type="submit" href="#/signup">Sign Up</button>
+              <button class="ui button" type="submit" href="#/signup">Sign Up</button>
             </div>
           </form>
         </div>
@@ -37,25 +37,34 @@ export default {
         username: "",
         password: ""
       },
-       check: []
+      session: ""
     };
   },
   methods: {
     logIn() {
       axios
-        .post(
-          "http://localhost:5000/profile/login" , this.Account
-        )
+        .post("http://localhost:5000/profile/login", this.Account)
         .then(response => {
-         console.log(response.data.result)
+          console.log(response.data.result);
+      
         })
         .catch(error => {
           console.log(error);
         });
-    }
+      
+    },
+    // check(){
+    //   axios.post("http://localhost:5000/profile/checkLogin")
+    //   .then(response => {
+    //     console.log(response.data.result);
+    //   })
+    //   .catch(error => {
+    //     console.log(error);
+    //   });
+    // }
   },
-  mounted(){
-    this.check = response.data.result
+  mounted() {
+    
   }
 };
 </script>
