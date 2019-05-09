@@ -5,17 +5,29 @@ const router = express.Router();
 //generate bracket
 router.post('/generate', async (req, res) => {
     const brackets = await loadBracketCollection();
-    if (await checkLogin(req) === null){
-        res.send( {result: "error"} )
-        return
-    }
-    await brackets.insertOne({
-        username: req.body.username,
-        tourName: req.body.tourName,
-        tourSize: req.body.tourSize,
-        createdAt: new Date() 
-    });
-    res.send( {result: "Success"} )
+    // if (await checkLogin(req) === null){
+    //     res.send( {result: "error"} )
+    //     return
+    // }
+
+    if (req.body.username === null || req.body.tourName === null || req.body.tourSize === null){ res.send( {result: "error"} ) 
+    return}
+    let br = await brackets.findOne(
+        { username:  req.body.username ,tourName: req.body.tourName }
+    );
+    if ( br === null){
+        await brackets.insertOne({
+            username: req.body.username,
+            tourName: req.body.tourName,
+            tourSize: req.body.tourSize,
+            createdAt: new Date() 
+        });
+        let eiei = await  brackets.findOne({ username: req.body.username,
+            tourName: req.body.tourName,
+            tourSize: req.body.tourSize})
+        res.send( {result: "Success" ,_id : eiei._id} )   
+    } 
+    else {res.send( {result: "Fail"} )}
 })
 
 // create save
@@ -74,5 +86,6 @@ async function checkLogin(req) {
     console.log(auth);
     return auth
 }
+
 
 module.exports = router;

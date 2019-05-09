@@ -14,33 +14,7 @@
                     </div>
                   </div>
 
-            <!-- Tourament Type
-            <div>
-                <div class="ui form">
-                    <div class="field"><br>
-                        <label style="font-size:25px">Tourament Type :</label><br>
-                        <div class="field">
-                          <div class="ui radio checkbox">
-                            <input type="radio" name="typeOfTour" v-model="tour_type" value="Single Eliminate">
-                            <label>Single Eliminate</label>
-                          </div>
-                        </div>
-                         <div class="field">
-                          <div class="ui radio checkbox">
-                            <input type="radio" name="typeOfTour" v-model="tour_type" value="Double_Eliminate">
-                            <label>Double Eliminate</label>
-                          </div>
-                        </div>
-                        <div class="field">
-                          <div class="ui radio checkbox">
-                            <input type="radio" name="typeOfTour" v-model="tour_type" value="Round_Robin">
-                            <label>Round Robin</label>
-                          </div>
-                        </div>
-                    </div>
-                  </div>
-            </div>-->
-
+  
             <!-- Tourament Size -->
             
                  <div>
@@ -88,7 +62,7 @@
 
           </div>
       </div>
-{{tour_name}} : {{tour_size}}
+{{tour_name}} : {{tour_size}} : {{check.checkSession}} 
     </div>  
   </div>
 </template>
@@ -103,40 +77,74 @@ export default {
     return {
       msg: 'Tournament Generator',
       tour_name: null,
-      //tour_type: null,
       tour_size: null, 
-
+      check: [],
+      newID: ""
     }
   },
   methods: {
       Generate(){
           //console.log("Generate")
-          if(this.tour_name == null || this.tour_size == null){
+          if(this.tour_name == '' || this.tour_size == null){
             alert("PLEASE ENTER NAME , SIZE")
           }
           else{
             let newBracket = {
-              tour_name: this.tour_name,
-              //tour_type: this.tour_type,
-              tour_size: this.tour_size,
+              username: this.check.checkSession.username,
+              tourName: this.tour_name,
+              tourSize: this.tour_size,
+
               }
 
-            // axios. ('http://localhost:5000/generator/user', newBracket)
-            //   .then((response) => {
-            //     console.log(response)
-            //   })
-            //   .catch((error) => {
-            //     console.log(error)
-            //   })
-            //console.log(newBracket)
+            axios.post('http://localhost:5000/bracket/generate', newBracket)
+              .then((response) => {
+                console.log('BracketGen HERE VVVVV')
+                console.log(response)
+                console.log(response.data.result) 
+                if(response.data.result == 'Success'){
+                 var newID = response.data._id
+                 router.push({ name:'CreateBracketPage', params:{newBracket , newID} })  // name : namePage , params:{ตัวแปร}
+                }
+                else{
+                  alert('Tournament name is already use ! ');
+                }
+              })
+              .catch((error) => {
+                console.log(error)
+              })
+            console.log(newBracket)
 
-            router.push({ name:'BracketPage', params:{newBracket} })  // name : namePage , params:{ตัวแปร}
+            // router.push({ name:'BracketPage', params:{newBracket} })  // name : namePage , params:{ตัวแปร}
           }
       }
   },
+
   mounted() {
-    //console.log(this.$route)
+    // console.log(this.$route)
+    
+    axios.post("http://localhost:5000/profile/checkLogin")
+      .then(response =>{
+        console.log(response.data)
+        this.check = response.data
+      })
+      .catch(error => {
+        console.log(error);
+      })
   },
+
+  beforeRouteEnter(to, from, next) {
+    axios
+      .post("http://localhost:5000/profile/checkLogin")
+      .then(response => {
+        next(vm => (vm.check = response.data.checkSession.username ));
+        console.log('Username is : ' + response.data.checkSession.username);
+        
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  },
+
 }
 
 </script>

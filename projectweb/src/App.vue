@@ -7,7 +7,7 @@
 
       <div class="compact right menu">
 
-          <!-- <div class="ui item">
+           <div class="ui item">
             <a v-if="check != 'Success'" href="#/login">Login</a>
             </div>
             <div class="ui item">

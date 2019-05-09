@@ -67,6 +67,7 @@ export default {
       check: []
     };
   },
+  
   methods: {
     logOut(){
       axios
@@ -80,6 +81,7 @@ export default {
       window.location.reload()
     }
   },
+
   beforeRouteEnter(to, from, next) {
     axios
       .post("http://localhost:5000/profile/checkLogin")
