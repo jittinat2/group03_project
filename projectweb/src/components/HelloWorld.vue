@@ -7,7 +7,7 @@
           <h1 style="color: pink; font-size: 80px"> Bracket Generated </h1>
             <span>
               <a class="active item" href="#/login">
-                <img src="../assets/pink.jpg" width="1650" height="700" opacity="0.5">
+                <img src="../assets/pink.jpg" width="1100" height="700" opacity="0.5">
               </a>
             </span>
           </div>
@@ -25,7 +25,7 @@
               <br>
               <br>
               <li style="color: white; font-size: 25px">
-                <a href="#/ji" style="color: white;">Preview</a>
+                <a href="#/pre" style="color: white;">Preview</a>
               </li>
               <br>
               <br>
@@ -66,6 +66,7 @@ export default {
         let ob = {
           username: this.uname
         };
+        window.location.reload;
       })
    }
 };
@@ -79,21 +80,11 @@ export default {
 #test2 {
   background: rgba(15, 15, 15, 0.8);
 }
-.outline {
-  font-size: 40px;
-  opacity: 1;
-}
 .list {
   font-size: 25px;
   opacity: 1;
 }
-.h3 {
-  color: red;
-}
 .ul {
   color: white;
-}
-.dimmer {
-  background-color: rgba(250, 250, 50, 0.1);
 }
 </style>

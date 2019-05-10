@@ -10,8 +10,7 @@ import Forgot from '@/components/forgot'
 import ResetPass from '@/components/resetpass'
 import Profile from '@/components/profile'
 import ShowBracketPage from '@/components/ShowBracketPage'
-import Ji from '@/components/ji'
-
+import Pre from '@/components/pre'
 
 Vue.use(Router)
 
@@ -73,9 +72,9 @@ export default new Router({
       component: Profile
     },
     {
-      path: '/ji',
-      name: 'Ji',
-      component: Ji
+      path: '/pre',
+      name: 'Pre',
+      component: Pre
     },
   ]
 })

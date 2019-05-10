@@ -56,7 +56,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #segment{
   background: rgba(255, 247, 247, 0.2);
   margin-left:10% ;

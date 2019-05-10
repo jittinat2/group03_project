@@ -2,9 +2,6 @@
   <div class="Profile">
     <div class="ui segment" id="test1">
       <div class="ui inverted segment" id="test2">
-        <div>
-          <h2>Preview</h2>
-        </div>
         <div class="ui internally celled grid">
           <div class="row">
             <div class="one wide column">
@@ -90,13 +87,7 @@ export default {
 };
 </script>
 
-export default {
-  name: "app",
-
-    }
-};
-</script>
-<style>
+<style scoped>
 #test1 {
   background: rgba(15, 15, 15, 0);
 }

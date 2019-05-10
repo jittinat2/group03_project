@@ -192,9 +192,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-#buttonTeam{
-
-}
 #grid{
   background: rgba(255, 247, 247, 0.05);
 

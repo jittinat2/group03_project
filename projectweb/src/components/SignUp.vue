@@ -129,7 +129,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #test1 {
   background: rgba(15, 15, 15, 0);
 }

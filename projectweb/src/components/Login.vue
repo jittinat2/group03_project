@@ -78,44 +78,10 @@ export default {
 
       // router.push({ name:'HelloWorld'})
     }
-    // check(){
-    //   axios.post("http://localhost:5000/profile/checkLogin")
-    //   .then(response => {
-    //     console.log(response.data.result);
-    //   })
-    //   .catch(error => {
-    //     console.log(error);
-    //   });
-    // }
-  }
-  // beforeRouteEnter(to, from, next) {
-  //   axios
-  //     .post("http://localhost:5000/profile/checkLogin")
-  //     .then(response => {
-  //       next(vm => (vm.check = response.data.result));
-  //       // console.log(this.check)
-  //       console.log(response.data.result);
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     });
-  // // },
-  // mounted() {
-  //   axios
-  //     .post("http://localhost:5000/profile/checkLogin")
-  //     .then(response => {
-  //       next(vm => (vm.check = response.data.result));
-  //       // console.log(this.check)
-  //       console.log(response.data.result);
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     });
-  // }
+}
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 #test1 {
   background: rgba(15, 15, 15, 0);
