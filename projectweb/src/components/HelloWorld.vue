@@ -3,17 +3,17 @@
     <div class="ui segment" id="test1">
       <div class="ui inverted segment" id="test2">
         <div class="ui grid">
-          <div class="ten wide column">
+          <div class="thirteen wide column">
+          <h1 style="color: pink; font-size: 80px"> Bracket Generated </h1>
             <span>
               <a class="active item" href="#/login">
-                <img src="../assets/pink.jpg" width="850" height="500" opacity="0.5">
+                <img src="../assets/pink.jpg" width="1650" height="700" opacity="0.5">
               </a>
             </span>
           </div>
-          <div class="six wide column">
-            <br>
-            <br>
-            <h3 style="color: pink; font-size: 50px">Outline</h3>
+          <div class="center align grid" >
+          <div class="three wide column" style="margin-top:140px">
+            <h3 style="color: pink; font-size: 60px">Outline</h3>
             <br>
             <ul>
               <li style="color: white; font-size: 25px" v-if="check.result != 'Success'">
@@ -34,6 +34,7 @@
               </li>
             </ul>
           </div>
+        </div>
         </div>
       </div>
     </div>
