@@ -9,28 +9,28 @@
                 <i class="step backward icon"></i>
               </button>
             </div>
-            
+
             <div class="fourteen wide column">
-            <div class="center align grid" style="text-align: center">  
-              <div v-if="m==0">
-                <img class="ui fluid image" src="../assets/1.jpg" >
+              <div class="center align grid" style="text-align: center">
+                <div v-if="m==0">
+                  <img class="ui fluid image" src="../assets/1.jpg">
+                </div>
+                <div v-else-if="m==1">
+                  <img class="ui fluid image" src="../assets/2.jpg">
+                </div>
+                <div v-else-if="m==2">
+                  <img class="ui fluid image" src="../assets/3.jpg">
+                </div>
+                <div v-else-if="m==3">
+                  <img class="ui fluid image" src="../assets/4.jpg">
+                </div>
+                <div v-else-if="m==4">
+                  <img class="ui fluid image" src="../assets/5.jpg">
+                </div>
+                <div v-else-if="m==5">
+                  <img class="ui fluid image" src="../assets/6.jpg">
+                </div>
               </div>
-              <div v-else-if="m==1">
-                <img class="ui fluid image" src="../assets/2.jpg">
-              </div>
-              <div v-else-if="m==2">
-                <img class="ui fluid image" src="../assets/3.jpg">
-              </div>
-              <div v-else-if="m==3">
-                <img class="ui fluid image" src="../assets/4.jpg">
-              </div>
-              <div v-else-if="m==4">
-                <img class="ui fluid image" src="../assets/5.jpg">
-              </div>
-              <div v-else-if="m==5">
-                <img class="ui fluid image" src="../assets/6.jpg">
-              </div>
-            </div>
             </div>
             <div class="one wide column">
               <button class="ui green icon button" style="margin-top:100px" @click="next">

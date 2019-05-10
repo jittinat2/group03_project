@@ -8,7 +8,12 @@
             <div class="field" style="text-align: left">
               <label style="color: white; font-size: 15px">New Password</label>
               <div class="ui left icon input">
-                <input name="newpw" type="text" v-model="newpass.npass" placeholder="New Password">
+                <input
+                  name="newpw"
+                  type="password"
+                  v-model="newpass.npass"
+                  placeholder="New Password"
+                >
                 <i class="edit icon"></i>
               </div>
             </div>
@@ -18,7 +23,7 @@
               <div class="ui left icon input">
                 <input
                   name="connewpassword"
-                  type="text"
+                  type="password"
                   v-model="newpass.connpass"
                   placeholder="Confirm New Password"
                 >
@@ -38,21 +43,25 @@
 
 <script>
 import axios from "axios";
-import router from '../router'
+import router from "../router";
 export default {
   name: "HelloWorld",
   data() {
     return {
       newpass: {
         npass: "",
-        connpass:""
+        connpass: ""
       },
       x: []
     };
   },
   methods: {
     Reset() {
-      if (this.newpass.npass != "" && this.newpass.connpass != "" && (this.newpass.npass == this.newpass.connpass)) {
+      if (
+        this.newpass.npass != "" &&
+        this.newpass.connpass != "" &&
+        this.newpass.npass == this.newpass.connpass
+      ) {
         let sendNewPass = {
           username: this.x,
           password: this.newpass.npass
@@ -62,7 +71,7 @@ export default {
           .post("http://localhost:5000/profile/rePassword", sendNewPass)
           .then(response => {
             console.log(response.data.result); ///////////////////////where!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            router.push({ name: 'HelloWorld' })
+            router.push({ name: "HelloWorld" });
           })
           .catch(error => {
             console.log(error);

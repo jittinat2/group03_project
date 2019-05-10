@@ -70,7 +70,12 @@ export default {
         .post("http://localhost:5000/profile/login", this.Account)
         .then(response => {
           console.log(response.data.result);
-          this.$router.go("/");
+          if (response.data.result == "Fail") {
+            alert("Username and/or Password wrong!");
+            window.location.reload();
+          } else {
+            this.$router.go("/");
+          }
         })
         .catch(error => {
           console.log(error);
@@ -78,7 +83,7 @@ export default {
 
       // router.push({ name:'HelloWorld'})
     }
-}
+  }
 };
 </script>
 
@@ -92,6 +97,5 @@ export default {
 h2 {
   color: white;
   font-size: 30px;
-  
 }
 </style>

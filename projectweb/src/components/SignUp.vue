@@ -22,7 +22,7 @@
               <div class="ui left icon input">
                 <input
                   name="password"
-                  type="text"
+                  type="password"
                   v-model="Account.password"
                   placeholder="Password"
                 >
@@ -34,7 +34,7 @@
               <div class="ui left icon input">
                 <input
                   name="confirmpassword"
-                  type="text"
+                  type="password"
                   v-model="Account.confirmpassword"
                   placeholder="Password"
                 >
@@ -44,7 +44,7 @@
             <div class="field" style="text-align: left">
               <label style="color: white; font-size: 15px">Email</label>
               <div class="ui left icon input">
-                <input name="email" type="text" v-model="Account.email" placeholder="Email">
+                <input name="email" type="email" v-model="Account.email" placeholder="email@mail.com">
                 <i class="envelope icon"></i>
               </div>
             </div>
@@ -97,7 +97,6 @@ export default {
         this.confirmpassword != ""
       ) {
         if (this.Account.password == this.Account.confirmpassword) {
-          // if(this.Account.username != this.data.username){
           let newUser = {
             username: this.Account.username,
             password: this.Account.password,
@@ -109,7 +108,12 @@ export default {
             .then(response => {
               console.log(response.data.result);
               console.log(newUser.username);
-              //this.$router.replace("#/");
+              if(response.data.result == "Fail"){
+                alert("This Username cannot used")
+                window.location.reload()
+              }else{
+                this.$router.replace("/");
+              }
             })
             .catch(error => {
               console.log(error);
@@ -124,7 +128,7 @@ export default {
       } else {
         alert("A data must be present");
       }
-      router.push({ name: '/' })
+      router.push({ name: "/" });
     }
   }
 };
