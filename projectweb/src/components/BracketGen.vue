@@ -126,24 +126,27 @@ export default {
       .then(response =>{
         console.log(response.data)
         this.check = response.data
+        if(response.data.result != 'Success'){
+          router.push({ name: 'HelloWorld' })
+        }
       })
       .catch(error => {
         console.log(error);
       })
   },
 
-  beforeRouteEnter(to, from, next) {
-    axios
-      .post("http://localhost:5000/profile/checkLogin")
-      .then(response => {
-        next(vm => (vm.check = response.data.checkSession.username ));
-        console.log('Username is : ' + response.data.checkSession.username);
+  // beforeRouteEnter(to, from, next) {
+  //   axios
+  //     .post("http://localhost:5000/profile/checkLogin")
+  //     .then(response => {
+  //       next(vm => (vm.check = response.data.result ));
+  //       console.log('Username is : ' + response.data.checkSession.username);
         
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  },
+  //     })
+  //     .catch(error => {
+  //       console.log(error);
+  //     });
+  // },
 
 }
 

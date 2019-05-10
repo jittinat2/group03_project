@@ -46,21 +46,13 @@ export default {
     };
   },
   methods: {
-    // GoToShowBracket(i){
-    //  // alert(this.AllUserTour[i-1]._id)
-    //   let Bracket_id = {
-    //     _id:this.AllUserTour[i-1]._id
-    //   }
-    //   router.push({ name:'ShowBracketPage', params:{Bracket_id} })
-      
-    // }
+    
   },
   mounted() {
     axios
       .post("http://localhost:5000/profile/checkLogin")
       .then(response => {
-        // next(vm => (vm.check = response.data.result));
-        // console.log(this.check)
+        
         console.log(response.data);
         this.uname = response.data.checkSession.username;
         console.log(this.uname);
