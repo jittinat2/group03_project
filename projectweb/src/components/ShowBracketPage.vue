@@ -12,8 +12,8 @@
             <div style="margin-left:12.5% ; margin-right:12.5% ; margin-top: 2.5% ">
 
               <router-link :to="{ path: '/BracketGenerator/'}"><button class="ui positive button" id='buttonBottom'><i class="columns icon"></i>Create New Bracket</button></router-link>
-              <router-link :to="{ path: '/BracketGenerator/'}"><button class="ui primary button" id='buttonBottom' @click="UpdateBracket"><i class="save icon"></i>Save</button></router-link>
-              <router-link :to="{ path: '/BracketGenerator/'}"><button class="ui negative button" id='buttonBottom' @click="DeleteBracket"><i class="eraser icon"></i>Delete</button></router-link>
+              <router-link :to="{ path: '/profile'}"><button class="ui primary button" id='buttonBottom' @click="UpdateBracket"><i class="save icon"></i>Save</button></router-link>
+              <router-link :to="{ path: '/profile'}"><button class="ui negative button" id='buttonBottom' @click="DeleteBracket"><i class="eraser icon"></i>Delete</button></router-link>
               
             </div>
           
@@ -42,7 +42,13 @@
           </div>
         </div>
         
-          <h1 style="font-size: 70px; color:white; text-align:center;">Winner is : {{Winner}}</h1>
+          <div class="ui segment" style="  background: rgba(36, 32, 245, 0.842); margin-left:12.5% ; margin-right:12.5% ; margin-top: 2.5% ;">
+            <h1 style="font-size: 70px; color:white; text-align:center; color:yellow">
+              <img src="../assets/winner-cup.png" width="60px">  
+                Winner is : {{Winner}}
+              <img src="../assets/winner-cup.png" width="60px"> 
+            </h1>
+          </div>
 
             <div style="margin-left:12.5% ; margin-right:12.5% ; margin-top: 2.5% ; margin-bottom: 5%">
 
@@ -58,8 +64,8 @@
               
               <br><br>
               <router-link :to="{ path: '/BracketGenerator/'}"><button class="ui positive button" id='buttonBottom'><i class="columns icon"></i>Create New Bracket</button></router-link>
-              <router-link :to="{ path: '/BracketGenerator/'}"><button class="ui primary button" id='buttonBottom' @click="UpdateBracket"><i class="save icon"></i>Save</button></router-link>
-              <router-link :to="{ path: '/BracketGenerator/'}"><button class="ui negative button" id='buttonBottom' @click="DeleteBracket"><i class="eraser icon"></i>Delete</button></router-link>
+              <router-link :to="{ path: '/profile'}"><button class="ui primary button" id='buttonBottom' @click="UpdateBracket"><i class="save icon"></i>Save</button></router-link>
+              <router-link :to="{ path: '/profile'}"><button class="ui negative button" id='buttonBottom' @click="DeleteBracket"><i class="eraser icon"></i>Delete</button></router-link>
               
             </div>
 
@@ -145,12 +151,14 @@ export default {
 
   mounted() {
     
-    axios.post("http://localhost:5000/profile/checkLogin")
+    //console.log("THIS BRACKET ID "+ this.$route.params.Bracket_id._id)
+
+    axios.post("http://localhost:5000/profile/checkLogin",this.$route.params.id)
       .then(response =>{
         console.log(response.data)
         this.check = response.data
         
-        this.idOfthisBracket = '5cd462c8612008638cf6f573' //this.$route.params.newID ///////////////////////// FIX HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+        this.idOfthisBracket = this.$route.params.id 
 
         let ShowThisBracket = {
         _id : this.idOfthisBracket
@@ -185,7 +193,6 @@ export default {
                     this.numOfCreateMatch[i] = Math.pow(2,i)
                   }
                   this.numOfRound = round
-                  //this.idOfthisBracket = '5cd462c8612008638cf6f573' //this.$route.params.newID
                   console.log("numOfMatch : " + this.numOfMatch)
                   console.log("numOfCreateMatch : " + this.numOfCreateMatch)
 
@@ -222,9 +229,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-#buttonTeam{
-
-}
 #grid{
   background: rgba(255, 247, 247, 0.05);
 }
