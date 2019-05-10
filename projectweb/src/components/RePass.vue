@@ -8,7 +8,7 @@
             <div class="field" style="text-align: left">
               <label style="color: white; font-size: 15px">New Password</label>
               <div class="ui left icon input">
-                <input name="newpw" type="text" v-model="newpass.npass" placeholder="New Password">
+                <input name="newpw" type="password" v-model="newpass.npass" placeholder="New Password">
                 <i class="edit icon"></i>
               </div>
             </div>
@@ -18,7 +18,7 @@
               <div class="ui left icon input">
                 <input
                   name="connewpassword"
-                  type="text"
+                  type="password"
                   v-model="newpass.connpass"
                   placeholder="Confirm New Password"
                 >

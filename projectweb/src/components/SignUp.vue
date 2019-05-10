@@ -124,6 +124,7 @@ export default {
       } else {
         alert("A data must be present");
       }
+      router.push({ name: '/' })
     }
   }
 };
