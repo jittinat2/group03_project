@@ -4,11 +4,11 @@ const router = express.Router();
 
 //generate bracket
 router.post('/generate', async (req, res) => {
-    const brackets = await loadBracketCollection();
-    // if (await checkLogin(req) === null){
-    //     res.send( {result: "error"} )
-    //     return
-    // }
+    let brackets = await loadBracketCollection();
+    if (await checkLogin(req) === null){
+        res.send( {result: "error"} )
+        return
+    }
 
     if (req.body.username === null || req.body.tourName === null || req.body.tourSize === null){ res.send( {result: "error"} ) 
     return}
@@ -32,12 +32,12 @@ router.post('/generate', async (req, res) => {
 
 // create save
 router.post('/create', async (req, res) => {
-    const brackets = await loadBracketCollection();
+    let brackets = await loadBracketCollection();
     /* check to login*/
-    // if (await checkLogin(req) === null){
-    //     res.send( {result: "error"} )
-    //     return
-    // }
+    if (await checkLogin(req) === null){
+        res.send( {result: "error"} )
+        return
+    }
     /* ใช้ _id หาว่าอันไหนของใครแล้ว ค่อย update */ 
     await brackets.findOneAndUpdate( {_id: new mongodb.ObjectID(req.body._id )},{$set: {Detail:req.body.Detail}} );
     res.send( {result: "Success"} )
@@ -45,7 +45,7 @@ router.post('/create', async (req, res) => {
 
 //show own bracket 
 router.post('/show', async (req, res) => {
-    const brackets = await loadBracketCollection();
+    let brackets = await loadBracketCollection();
     if (await checkLogin(req) === null){
         res.send( {result: "error"} )
         return
@@ -53,10 +53,20 @@ router.post('/show', async (req, res) => {
     res.send(await brackets.findOne({_id: new mongodb.ObjectID(req.body._id )}));
 })
 
+//show own bracket 
+router.post('/showAllBracket', async (req, res) => {
+    let brackets = await loadBracketCollection();
+    if (await checkLogin(req) === null){
+        res.send( {result: "error"} )
+        return
+    }
+    res.send( await brackets.find({username: req.body.username}).toArray())
+})
+
 
 //delete bracket
 router.post('/delete', async (req, res) => {
-    const brackets = await loadBracketCollection();
+    let brackets = await loadBracketCollection();
     await brackets.deleteOne({_id: new mongodb.ObjectID(req.body._id )})
     console.log("Deleted ");
     res.status(200).send();

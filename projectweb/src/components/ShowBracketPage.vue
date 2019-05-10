@@ -151,12 +151,14 @@ export default {
 
   mounted() {
     
+    console.log("THIS BRACKET ID "+ this.$route.params.Bracket_id._id)
+
     axios.post("http://localhost:5000/profile/checkLogin")
       .then(response =>{
         console.log(response.data)
         this.check = response.data
         
-        this.idOfthisBracket = '5cd462c8612008638cf6f573' //this.$route.params.newID ///////////////////////// FIX HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+        this.idOfthisBracket = this.$route.params.Bracket_id._id 
 
         let ShowThisBracket = {
         _id : this.idOfthisBracket
@@ -165,7 +167,7 @@ export default {
             // CHECK LOGIN BEFORE GET DETAIL OF BRACKET
             //if(response.data.result == 'Success')
 
-             axios.post('http://localhost:5000/bracket/show' , '5cd4310548655a5030d626de')  
+             axios.post('http://localhost:5000/bracket/show' , ShowThisBracket)  
               .then((response) => {
                 console.log('Show Bracket' )
                 console.log(response.data.tourName)
@@ -191,7 +193,6 @@ export default {
                     this.numOfCreateMatch[i] = Math.pow(2,i)
                   }
                   this.numOfRound = round
-                  //this.idOfthisBracket = '5cd462c8612008638cf6f573' //this.$route.params.newID
                   console.log("numOfMatch : " + this.numOfMatch)
                   console.log("numOfCreateMatch : " + this.numOfCreateMatch)
 
@@ -228,9 +229,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-#buttonTeam{
-
-}
 #grid{
   background: rgba(255, 247, 247, 0.05);
 }
