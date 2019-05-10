@@ -28,7 +28,7 @@ export default new Router({
       component: BracketGen
     },
     {
-      path: '/CreateBracketPage',
+      path: '/CreateBracketPage/',
       name: 'CreateBracketPage',
       component: CreateBracketPage
     },
@@ -53,7 +53,7 @@ export default new Router({
       component: Forgot
     },
     {
-      path: '/ShowBracketPage',
+      path: '/ShowBracketPage/:id',
       name: 'ShowBracketPage',
       component: ShowBracketPage
     },

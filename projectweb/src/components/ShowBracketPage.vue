@@ -12,8 +12,8 @@
             <div style="margin-left:12.5% ; margin-right:12.5% ; margin-top: 2.5% ">
 
               <router-link :to="{ path: '/BracketGenerator/'}"><button class="ui positive button" id='buttonBottom'><i class="columns icon"></i>Create New Bracket</button></router-link>
-              <router-link :to="{ path: '/BracketGenerator/'}"><button class="ui primary button" id='buttonBottom' @click="UpdateBracket"><i class="save icon"></i>Save</button></router-link>
-              <router-link :to="{ path: '/BracketGenerator/'}"><button class="ui negative button" id='buttonBottom' @click="DeleteBracket"><i class="eraser icon"></i>Delete</button></router-link>
+              <router-link :to="{ path: '/profile'}"><button class="ui primary button" id='buttonBottom' @click="UpdateBracket"><i class="save icon"></i>Save</button></router-link>
+              <router-link :to="{ path: '/profile'}"><button class="ui negative button" id='buttonBottom' @click="DeleteBracket"><i class="eraser icon"></i>Delete</button></router-link>
               
             </div>
           
@@ -64,8 +64,8 @@
               
               <br><br>
               <router-link :to="{ path: '/BracketGenerator/'}"><button class="ui positive button" id='buttonBottom'><i class="columns icon"></i>Create New Bracket</button></router-link>
-              <router-link :to="{ path: '/BracketGenerator/'}"><button class="ui primary button" id='buttonBottom' @click="UpdateBracket"><i class="save icon"></i>Save</button></router-link>
-              <router-link :to="{ path: '/BracketGenerator/'}"><button class="ui negative button" id='buttonBottom' @click="DeleteBracket"><i class="eraser icon"></i>Delete</button></router-link>
+              <router-link :to="{ path: '/profile'}"><button class="ui primary button" id='buttonBottom' @click="UpdateBracket"><i class="save icon"></i>Save</button></router-link>
+              <router-link :to="{ path: '/profile'}"><button class="ui negative button" id='buttonBottom' @click="DeleteBracket"><i class="eraser icon"></i>Delete</button></router-link>
               
             </div>
 
@@ -151,14 +151,14 @@ export default {
 
   mounted() {
     
-    console.log("THIS BRACKET ID "+ this.$route.params.Bracket_id._id)
+    //console.log("THIS BRACKET ID "+ this.$route.params.Bracket_id._id)
 
-    axios.post("http://localhost:5000/profile/checkLogin")
+    axios.post("http://localhost:5000/profile/checkLogin",this.$route.params.id)
       .then(response =>{
         console.log(response.data)
         this.check = response.data
         
-        this.idOfthisBracket = this.$route.params.Bracket_id._id 
+        this.idOfthisBracket = this.$route.params.id 
 
         let ShowThisBracket = {
         _id : this.idOfthisBracket

@@ -15,9 +15,11 @@
           <h1 style="text-align : center;">My Tournament Backet</h1>
           <div class="ui inverted segment" style="margin-left:15%; margin-right:15%; background: rgba(15, 15, 15, 0.5);">
           <div v-for="i in AllUserTour.length" v-bind:key="i" id="buttonTour">
-            <button class="ui fluid inverted grey button" @click="GoToShowBracket(i)">
+            <router-link :to="{ path: '/ShowBracketPage/' + AllUserTour[i-1]._id}">
+              <button class="ui fluid inverted grey button">
               <h1>{{AllUserTour[i-1].tourName}}</h1>  
             </button>
+            </router-link>
           </div>
         </div>
         </div>
@@ -44,14 +46,14 @@ export default {
     };
   },
   methods: {
-    GoToShowBracket(i){
-     // alert(this.AllUserTour[i-1]._id)
-      let Bracket_id = {
-        _id:this.AllUserTour[i-1]._id
-      }
-      router.push({ name:'ShowBracketPage', params:{Bracket_id} })
+    // GoToShowBracket(i){
+    //  // alert(this.AllUserTour[i-1]._id)
+    //   let Bracket_id = {
+    //     _id:this.AllUserTour[i-1]._id
+    //   }
+    //   router.push({ name:'ShowBracketPage', params:{Bracket_id} })
       
-    }
+    // }
   },
   mounted() {
     axios
@@ -78,7 +80,7 @@ export default {
             }
 
             console.log('PASSWORD STAR : ' + this.passwordStar)
-            this.nameOfthis = response.data.username  ///////////////////////// FIX HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE NEEDDDDDDDDDDDDDDDDDDDDDDD SEARCH BY USER
+            this.nameOfthis = response.data.username    
             console.log('User name : ' + this.nameOfthis);
             let ShowThisUserBrackets = {
               username : this.nameOfthis
