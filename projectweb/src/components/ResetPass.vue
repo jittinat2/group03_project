@@ -54,7 +54,7 @@ export default {
       if (this.newpass.npass != "" && this.newpass.connpass != "") {
         let sendNewPass = {
           username: this.x,
-          newpassword: this.newpass.npass
+          password: this.newpass.npass
         };
         console.log(sendNewPass);
         axios

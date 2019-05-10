@@ -8,7 +8,7 @@
         <div class="ui internally celled grid">
           <div class="row">
             <div class="one wide column">
-              <button class="ui green icon button" style="margin-top:300px" @click="previous">
+              <button class="ui green icon button" style="margin-top:100px" @click="previous">
                 <i class="step backward icon"></i>
               </button>
             </div>
@@ -36,7 +36,7 @@
             </div>
             </div>
             <div class="one wide column">
-              <button class="ui green icon button" style="margin-top:300px" @click="next">
+              <button class="ui green icon button" style="margin-top:100px" @click="next">
                 <i class="step forward icon"></i>
               </button>
             </div>

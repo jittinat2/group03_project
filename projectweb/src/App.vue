@@ -28,7 +28,7 @@
       </div>
       <div class="compact right menu" v-else>
         <div class="ui item">
-          <a>Hello !! {{profile.profilename}}</a>
+          <a href="#/profile"> Hello !! {{profile.profilename}}</a>
         </div>
         <div class="ui item">
           <i class="white sign-out"></i>

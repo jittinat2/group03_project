@@ -58,7 +58,7 @@ export default {
         // next(vm => (vm.check = response.data.result));
         // console.log(this.check)
         console.log(response.data);
-        this.uname = response.data.checkSession.usrname;
+        this.uname = response.data.checkSession.username;
         console.log(this.uname);
         this.check = response.data;
         console.log(response.data);

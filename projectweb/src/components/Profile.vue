@@ -7,6 +7,9 @@
           
           <h2> <i class="user icon"></i> Username : {{profile.username}}</h2>
           <h2> <i class="lock icon"></i> Password : {{passwordStar}}</h2>
+          <div class="center align grid" style="text-align: center">
+          <button class="ui center button" @click="Reset"><i class="key icon"></i> Change Password </button>
+          </div>
           <h2> <i class="envelope icon"></i> E-mail : {{profile.email}} </h2>
 
          </div>
@@ -46,14 +49,28 @@ export default {
     };
   },
   methods: {
-    // GoToShowBracket(i){
-    //  // alert(this.AllUserTour[i-1]._id)
-    //   let Bracket_id = {
-    //     _id:this.AllUserTour[i-1]._id
-    //   }
-    //   router.push({ name:'ShowBracketPage', params:{Bracket_id} })
-      
-    // }
+    Reset() {
+      console.log(this.profile)
+      if (this.profile.username != "" && this.profile.email != "") {
+        let namemail = {
+          username: this.profile.username,
+          email: this.profile.email
+        };
+        axios
+          .post("http://localhost:5000/profile/forget", namemail)
+          .then(response => {
+            console.log(response.data.result);
+            
+          })
+          .catch(error => {
+            console.log(error);
+          });
+          let newName = {
+          usrname: namemail.username
+        };
+          router.push({ name: "ResetPass", params: { newName } });
+      }
+  },
   },
   mounted() {
     axios
@@ -61,6 +78,9 @@ export default {
       .then(response => {
         // next(vm => (vm.check = response.data.result));
         // console.log(this.check)
+        if(response.data.result != 'Success'){
+          router.push({ name: 'HelloWorld' })
+        }
         console.log(response.data);
         this.uname = response.data.checkSession.username;
         console.log(this.uname);

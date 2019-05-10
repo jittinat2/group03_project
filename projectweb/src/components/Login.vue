@@ -22,7 +22,7 @@
               <div class="ui left icon input">
                 <input
                   name="password"
-                  type="text"
+                  type="password"
                   v-model="Account.password"
                   placeholder="Password"
                 >
