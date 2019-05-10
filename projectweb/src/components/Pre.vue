@@ -5,6 +5,7 @@
         <div class="ui internally celled grid">
           <div class="row">
             <div class="one wide column">
+              <!-- preview button part if call web will call previous function-->
               <button class="ui green icon button" style="margin-top:100px" @click="previous">
                 <i class="step backward icon"></i>
               </button>
@@ -12,6 +13,7 @@
 
             <div class="fourteen wide column">
               <div class="center align grid" style="text-align: center">
+                <!-- image preview show from var m from function-->
                 <div v-if="m==0">
                   <img class="ui fluid image" src="../assets/1.jpg">
                 </div>
@@ -33,6 +35,7 @@
               </div>
             </div>
             <div class="one wide column">
+              <!-- next button part when click web will call next function -->
               <button class="ui green icon button" style="margin-top:100px" @click="next">
                 <i class="step forward icon"></i>
               </button>
@@ -54,7 +57,7 @@ export default {
     };
   },
   methods: {
-    next() {
+    next() {                                            //next function
       console.log(this.i);
       console.log(this.m);
       if (this.i >= 0) {
@@ -67,7 +70,7 @@ export default {
       console.log(this.i);
       console.log(this.m);
     },
-    previous() {
+    previous() {                                      //previous function
       console.log(this.i);
       console.log(this.m);
       if (this.i > 0) {

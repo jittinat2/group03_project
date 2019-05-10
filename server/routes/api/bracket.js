@@ -2,9 +2,10 @@ const express = require('express');
 const mongodb = require('mongodb');
 const router = express.Router();
 
-//generate bracket
+//generate bracket to stores username , tourName , tourSize
 router.post('/generate', async (req, res) => {
     let brackets = await loadBracketCollection();
+    /* check to login*/
     if (await checkLogin(req) === null){
         res.send( {result: "error"} )
         return
@@ -26,11 +27,11 @@ router.post('/generate', async (req, res) => {
             tourName: req.body.tourName,
             tourSize: req.body.tourSize})
         res.send( {result: "Success" ,_id : eiei._id} )   
-    } 
+    } /*if user not login */
     else {res.send( {result: "Fail"} )}
 })
 
-// create save
+// create for save into database
 router.post('/create', async (req, res) => {
     let brackets = await loadBracketCollection();
     /* check to login*/
@@ -46,6 +47,7 @@ router.post('/create', async (req, res) => {
 //show own bracket 
 router.post('/show', async (req, res) => {
     let brackets = await loadBracketCollection();
+    /* check to login*/
     if (await checkLogin(req) === null){
         res.send( {result: "error"} )
         return
@@ -53,9 +55,10 @@ router.post('/show', async (req, res) => {
     res.send(await brackets.findOne({_id: new mongodb.ObjectID(req.body._id )}));
 })
 
-//show own bracket 
+//show all bracket of a user 
 router.post('/showAllBracket', async (req, res) => {
     let brackets = await loadBracketCollection();
+    /* check to login*/
     if (await checkLogin(req) === null){
         res.send( {result: "error"} )
         return
@@ -67,17 +70,21 @@ router.post('/showAllBracket', async (req, res) => {
 //delete bracket
 router.post('/delete', async (req, res) => {
     let brackets = await loadBracketCollection();
-    await brackets.deleteOne({_id: new mongodb.ObjectID(req.body._id )})
-    console.log("Deleted ");
-    res.status(200).send();
+    /* check to login*/
+    if (await checkLogin(req) === null){
+        res.send( {result: "error"} )
+        return
+    }
+    res.send(await brackets.deleteOne({_id: new mongodb.ObjectID(req.body._id )}) )
+    console.log("Deleted ")
 })
 
-async function loadBracketCollection() {
+async function loadBracketCollection() {                            
     const client = await mongodb.MongoClient.connect
     ('mongodb+srv://phaksuree:Nan_79678956@mycluster-bpdtm.mongodb.net', {
         useNewUrlParser: true
     }) 
-
+    /* Connect to database in collection name Bracket */
     return client.db('vue').collection('Bracket');
 }
 
@@ -86,10 +93,10 @@ async function loadSessionCollection() {
     ('mongodb+srv://phaksuree:Nan_79678956@mycluster-bpdtm.mongodb.net', {
         useNewUrlParser: true
     }) 
-
+    /* Connect to database in collection name Sessions */
     return client.db('vue').collection('Sessions');
 }
-
+/* function to check user is login or not */
 async function checkLogin(req) {
     let sessions = await loadSessionCollection();
     let auth = await sessions.findOne({ sessionID: req.sessionID})

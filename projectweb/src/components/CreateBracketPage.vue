@@ -1,9 +1,6 @@
 <template>
   <div class="hello">
     <h1 style="font-size: 70px; color:white; text-align:center;">{{ msg }}</h1>
-
-    <!-- GRID -->
-
     <div
       class="ui raised segment"
       style="background: rgba(15 , 15, 15, 1); margin-left:12.5% ; margin-right:12.5% ;"
@@ -14,6 +11,9 @@
         >{{this.$route.params.newBracket.tourName}}</h1>
       </div>
     </div>
+
+    <!-- top button  -->
+
     <div style="margin-left:12.5% ; margin-right:12.5% ; margin-top: 2.5% ">
       <router-link :to="{ path: '/BracketGenerator/'}">
         <button class="ui positive button" id="buttonBottom">
@@ -31,6 +31,8 @@
         </button>
       </router-link>
     </div>
+
+    <!-- Bracket -->
 
     <div
       v-bind:class="divNameOfGrid"
@@ -75,6 +77,8 @@
       </h1>
     </div>
 
+    <!-- Team name -->
+
     <div style="margin-left:12.5% ; margin-right:12.5% ; margin-top: 2.5% ; margin-bottom: 5%">
       <div class="ui inverted segment">
         <h1>Team name setting</h1>
@@ -95,6 +99,9 @@
 
       <br>
       <br>
+
+      <!-- Bottom Button -->
+      
       <router-link :to="{ path: '/BracketGenerator/'}">
         <button class="ui positive button" id="buttonBottom">
           <i class="columns icon"></i>Create New Bracket
@@ -121,14 +128,14 @@ export default {
   data() {
     return {
       msg: "Tournament Bracket Page",
-      divNameOfGrid: "", //for create horizontal grid (ex. 3 round --> 3 horizontal grids)
+      divNameOfGrid: "",       //for create horizontal grid (ex. 3 round --> 3 horizontal grids)
       numOfMatch: 0,
       numOfRound: 0,
       numOfCreateMatch: [],
       idOfthisBracket: "",
       Winner: "_________",
 
-      Detail: [
+      Detail: [                                                                 // Detail of all team data
         [
           { teamName: "Round1_match1" },
           { teamName: "Round1_enemy_match_1" },
@@ -202,8 +209,7 @@ export default {
     };
   },
   methods: {
-    ClickToWinMove(teamName, round, match, orderOfbutton) {
-      //alert(teamName + ', Round : ' + round + ', Match : ' + match + ', orderOfButton : ' + orderOfbutton)
+    ClickToWinMove(teamName, round, match, orderOfbutton) {                                 //click to move team to next round
       console.log(orderOfbutton);
       this.Detail[round][match - 1].teamName = this.Detail[round - 1][
         orderOfbutton - 1
@@ -216,7 +222,7 @@ export default {
       }
     },
 
-    UpdateBracket() {
+    UpdateBracket() {                                                                      //Update Bracket with save button
       alert("Update : " + this.$route.params.newBracket.tourName);
 
       let UpdateThisBracket = {
@@ -225,7 +231,7 @@ export default {
       };
 
       axios
-        .post("http://localhost:5000/bracket/create", UpdateThisBracket)
+        .post("http://localhost:5000/bracket/create", UpdateThisBracket)                   
         .then(response => {
           console.log(
             "UPDATE : " +
@@ -240,7 +246,7 @@ export default {
         });
     },
 
-    DeleteBracket() {
+    DeleteBracket() {                                                                     //Delete Bracket
       alert("Delete !! ");
 
       let UpdateThisBracket = {
@@ -266,12 +272,12 @@ export default {
     var round =
       Math.log(parseInt(this.$route.params.newBracket.tourSize)) / Math.log(2);
     var numOfRoundNameDiv = "";
-    console.log("round : " + round);
-    if (round == 1) numOfRoundNameDiv = "one";
-    if (round == 2) numOfRoundNameDiv = "two";
-    if (round == 3) numOfRoundNameDiv = "three";
-    if (round == 4) numOfRoundNameDiv = "four";
-    if (round == 5) numOfRoundNameDiv = "five";
+    console.log("round : " + round);                                                      // A
+    if (round == 1) numOfRoundNameDiv = "one";                                            // Algorithm
+    if (round == 2) numOfRoundNameDiv = "two";                                            // to
+    if (round == 3) numOfRoundNameDiv = "three";                                          // create
+    if (round == 4) numOfRoundNameDiv = "four";                                           // a
+    if (round == 5) numOfRoundNameDiv = "five";                                           // Bracket
     this.divNameOfGrid = "ui " + numOfRoundNameDiv + " column divided grid";
     this.numOfMatch = this.$route.params.newBracket.tourSize / 2;
 
@@ -286,7 +292,7 @@ export default {
 
   beforeRouteEnter(to, from, next) {
     axios
-      .post("http://localhost:5000/profile/checkLogin")
+      .post("http://localhost:5000/profile/checkLogin")                             //check logged in session
       .then(response => {
         next(vm => (vm.check = response.data.checkSession.username));
         console.log("Username is : " + response.data.checkSession.username);

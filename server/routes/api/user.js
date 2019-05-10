@@ -16,8 +16,6 @@ router.post('/AUser', async (req, res) => {
 
 });
 
-
-
 // login
 router.post('/login', async (req, res) => {
 
@@ -32,9 +30,10 @@ router.post('/login', async (req, res) => {
         await sessions.insertOne({ sessionID: req.sessionID , username: ( req.body.username )})
         res.send( {result: "Success"} )
     }   
-    console.log(login);
+    //console.log(login);
 });
 
+// check user is login or not 
 router.post('/checkLogin', async (req, res) => {
     let checkSession = await checkLogin(req)
     if (checkSession === null){ 
@@ -56,13 +55,12 @@ router.post('/logout', async (req, res) => {
     res.send( {result: "Success"} )
 });
 
-
-// forget
+// forget password check if user and email correct
 router.post('/forget', async (req, res) => {
-    // if (await checkLogin(req) === null){
-    //     res.send( {result: "error"} )
-    //     return
-    // }
+    if (await checkLogin(req) === null){
+        res.send( {result: "error"} )
+        return
+    }
     let users = await loadUserCollection();
     let forget = await users.findOne(
         { email: ( req.body.email ) ,username: ( req.body.username ) }
@@ -73,14 +71,14 @@ router.post('/forget', async (req, res) => {
     
 });
 
-// repassword
+// rePassword 
 router.post('/rePassword', async (req, res) => {
     let users = await loadUserCollection();
     let re = await users.findOneAndUpdate(
         {username :( req.body.username )}  ,
         {$set: {password :( req.body.password )} }  
      ) 
-     console.log(re);
+     //console.log(re);
      
      if ( re.value === null ) { res.send( {result: "Fail"} ) } 
      else { res.send( {result: "Success"} )} 
@@ -121,7 +119,7 @@ async function loadUserCollection() {
     ('mongodb+srv://phaksuree:Nan_79678956@mycluster-bpdtm.mongodb.net', {
         useNewUrlParser: true
     }) 
-
+    /* Connect to database in collection name Users */
     return client.db('vue').collection('Users');
 }
 
@@ -130,7 +128,7 @@ async function loadSessionCollection() {
     ('mongodb+srv://phaksuree:Nan_79678956@mycluster-bpdtm.mongodb.net', {
         useNewUrlParser: true
     }) 
-
+    /* Connect to database in collection name Sessions */
     return client.db('vue').collection('Sessions');
 }
 

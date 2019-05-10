@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <div class="ui black inverted menu">
+    <div class="ui black inverted menu"> 
+      <!-- Bar -->
       <router-link :to="{ path: '/'}">
       <div class=" item">
         <img class="ui tiny image" src="./assets/LogoTournamentGenerator.png">
@@ -57,7 +58,7 @@ export default {
     HelloWorld
   },
   methods: {
-    logOut() {
+    logOut() {                                                          //function when press logout button
       axios
         .post("http://localhost:5000/profile/logout")
         .then(response => {
@@ -66,12 +67,11 @@ export default {
         .catch(error => {
           console.log(error);
         });
-      //window.location.reload();
     }
   },
-  mounted() {
+  mounted() {   
     axios
-      .post("http://localhost:5000/profile/checkLogin")
+      .post("http://localhost:5000/profile/checkLogin")               //check login when load page
       .then(response => {
         // next(vm => (vm.check = response.data.result));
         // console.log(this.check)
@@ -83,8 +83,8 @@ export default {
         let ob = {
           username: this.uname
         };
-        axios
-          .post("http://localhost:5000/profile/AUser", ob)
+        axios     
+          .post("http://localhost:5000/profile/AUser", ob)            //path to get user data
           .then(response => {
             console.log(response.data);
             this.profile = response.data;
@@ -98,7 +98,7 @@ export default {
       });
   },
   beforeRouteEnter(to, from, next) {
-    axios
+    axios                                                            ////check login before load page
       .post("http://localhost:5000/profile/checkLogin")
       .then(response => {
         next(vm => (vm.check = response.data.result));

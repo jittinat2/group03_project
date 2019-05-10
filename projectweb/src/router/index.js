@@ -61,11 +61,6 @@ export default new Router({
       name: 'ResetPass',
       component: ResetPass
     },
-    // {
-    //   path: '/preview',
-    //   name: 'Preview',
-    //   component: Preview
-    // },
     {
       path: '/profile',
       name: 'Profile',

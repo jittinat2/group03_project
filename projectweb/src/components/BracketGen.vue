@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1 style="font-size: 70px; color:white; text-align:center;">{{ msg }}</h1>
+    
     <!-- input Zone -->
     <div>
       <div class="ui raised segment" style="margin-left:30%; margin-right:30%;">
@@ -56,7 +57,7 @@
               </div>
             </div>
           </div>
-
+          <!-- Generate Button -->
           <br>
           <button class="ui fluid green button" @click="Generate" style="font-size:25px">Generate</button>
         </div>
@@ -82,8 +83,7 @@ export default {
   },
   methods: {
     Generate() {
-      //console.log("Generate")
-      if (this.tour_name == "" || this.tour_size == null) {
+      if (this.tour_name == "" || this.tour_size == null) {                   //Prevent null Tour_name,size
         alert("PLEASE ENTER NAME , SIZE");
       } else {
         let newBracket = {
@@ -93,7 +93,7 @@ export default {
         };
 
         axios
-          .post("http://localhost:5000/bracket/generate", newBracket)
+          .post("http://localhost:5000/bracket/generate", newBracket)         //Generate Bracket to DATABASE
           .then(response => {
             console.log("BracketGen HERE VVVVV");
             console.log(response);
@@ -103,7 +103,7 @@ export default {
               router.push({
                 name: "CreateBracketPage",
                 params: { newBracket, newID }
-              }); // name : namePage , params:{ตัวแปร}
+              });
             } else {
               alert("Tournament name is already use ! ");
             }
@@ -112,17 +112,13 @@ export default {
             console.log(error);
           });
         console.log(newBracket);
-
-        // router.push({ name:'BracketPage', params:{newBracket} })  // name : namePage , params:{ตัวแปร}
       }
     }
   },
 
   mounted() {
-    // console.log(this.$route)
-
     axios
-      .post("http://localhost:5000/profile/checkLogin")
+      .post("http://localhost:5000/profile/checkLogin")                 //Check have user logged in
       .then(response => {
         console.log(response.data);
         this.check = response.data;
@@ -134,19 +130,6 @@ export default {
         console.log(error);
       });
   }
-
-  // beforeRouteEnter(to, from, next) {
-  //   axios
-  //     .post("http://localhost:5000/profile/checkLogin")
-  //     .then(response => {
-  //       next(vm => (vm.check = response.data.result ));
-  //       console.log('Username is : ' + response.data.checkSession.username);
-
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     });
-  // },
 };
 </script>
 

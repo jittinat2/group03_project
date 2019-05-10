@@ -41,18 +41,6 @@ export default {
       check: []
     };
   },
-  // beforeRouteEnter(to, from, next) {
-  //   axios
-  //     .post("http://localhost:5000/profile/checkLogin")
-  //     .then(response => {
-  //       next(vm => (vm.check = response.data.result));
-  //       // console.log(this.check)
-  //       console.log(response.data.result);
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     });
-  // }
 };
 </script>
 

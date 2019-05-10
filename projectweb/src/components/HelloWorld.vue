@@ -4,6 +4,7 @@
       <div class="ui inverted segment" id="test2">
         <div class="ui grid">
           <div class="thirteen wide column">
+            <!-- show picture -->
           <h1 style="color: pink; font-size: 80px"> Bracket Generated </h1>
             <span>
               <a class="active item" href="#/login">
@@ -13,6 +14,7 @@
           </div>
           <div class="center align grid" >
           <div class="three wide column" style="margin-top:140px">
+            <!-- outline part -->
             <h3 style="color: pink; font-size: 60px">Outline</h3>
             <br>
             <ul>
@@ -54,10 +56,8 @@ export default {
   methods: {},
    mounted() {
     axios
-      .post("http://localhost:5000/profile/checkLogin")
+      .post("http://localhost:5000/profile/checkLogin")                     //check login when load page to change Login to Generated to Generate if login
       .then(response => {
-        // next(vm => (vm.check = response.data.result));
-        // console.log(this.check)
         console.log(response.data);
         this.uname = response.data.checkSession.username;
         console.log(this.uname);
@@ -72,7 +72,6 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 #test1 {
   background: rgba(15, 15, 15, 0);

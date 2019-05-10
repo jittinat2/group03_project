@@ -12,6 +12,9 @@
             <i class="lock icon"></i>
             Password : {{passwordStar}}
           </h2>
+
+          <!-- Change password button -->
+
           <div class="center align grid" style="text-align: center">
             <button class="ui center button" @click="Reset">
               <i class="key icon"></i> Change Password
@@ -22,6 +25,8 @@
             E-mail : {{profile.email}}
           </h2>
         </div>
+
+        <!-- Bracket Segment -->
 
         <div class="ui inverted segment" id="segment">
           <h1 style="text-align : center;">My Tournament Backet</h1>
@@ -62,7 +67,7 @@ export default {
   methods: {
     Reset() {
       console.log(this.profile);
-      if (this.profile.username != "" && this.profile.email != "") {
+      if (this.profile.username != "" && this.profile.email != "") {                //Change password
         let namemail = {
           username: this.profile.username,
           email: this.profile.email
@@ -84,10 +89,9 @@ export default {
   },
   mounted() {
     axios
-      .post("http://localhost:5000/profile/checkLogin")
+      .post("http://localhost:5000/profile/checkLogin")                                   //Check login
       .then(response => {
-        // next(vm => (vm.check = response.data.result));
-        // console.log(this.check)
+      
         if (response.data.result != "Success") {
           router.push({ name: "HelloWorld" });
         }
@@ -100,7 +104,7 @@ export default {
           username: this.uname
         };
         axios
-          .post("http://localhost:5000/profile/AUser", ob)
+          .post("http://localhost:5000/profile/AUser", ob)                                //Get user data
           .then(response => {
             console.log(response.data);
             this.profile = response.data;
@@ -118,7 +122,7 @@ export default {
 
             axios
               .post(
-                "http://localhost:5000/bracket/showAllBracket",
+                "http://localhost:5000/bracket/showAllBracket",                           //Get All Bracket Data
                 ShowThisUserBrackets
               )
               .then(response => {

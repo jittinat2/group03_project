@@ -5,6 +5,7 @@
         <div class="ui inverted segment" id="test2">
           <h2>Log in</h2>
           <form class="ui form">
+            <!-- form part -->
             <div class="field" style="text-align: left">
               <label style="color: white; font-size: 15px ">Username</label>
               <div class="ui left icon input">
@@ -39,8 +40,8 @@
                   <i class="sign-in icon"></i>
                   Login
                 </button>
-                <!-- <button class="ui button" type="submit" href="#/signup">Sign Up</button> -->
               </router-link>
+              <!-- call to home page and logIn function if click this button -->
             </div>
           </form>
         </div>
@@ -67,21 +68,19 @@ export default {
   methods: {
     logIn() {
       axios
-        .post("http://localhost:5000/profile/login", this.Account)
+        .post("http://localhost:5000/profile/login", this.Account)            //pass username and password to login into DB
         .then(response => {
-          console.log(response.data.result);
-          if (response.data.result == "Fail") {
+          console.log(response.data.result);                                  //DB will return result success or fail
+          if (response.data.result == "Fail") {                               //if faill web will alert and reload
             alert("Username and/or Password wrong!");
             window.location.reload();
           } else {
-            this.$router.go("/");
+            this.$router.go("/");                                             //if success will fo to home page
           }
         })
         .catch(error => {
           console.log(error);
         });
-
-      // router.push({ name:'HelloWorld'})
     }
   }
 };

@@ -4,7 +4,8 @@
       <div class="column" style="max-width: 450px">
         <div class="ui inverted segment" id="test2">
           <h2>Forgot password</h2>
-          <form class="ui form">
+          <form class="ui form">                            
+            <!-- form forgot password -->
             <div class="field" style="text-align: left">
               <label style="color: white; font-size: 15px">Username</label>
               <div class="ui left icon input">
@@ -29,6 +30,7 @@
             <i class="redo icon"></i>
             Reset Password
           </button>
+          <!-- call function Reset when clicked button -->
         </div>
       </div>
     </div>
@@ -50,22 +52,22 @@ export default {
   },
   methods: {
     Reset() {
-      if (this.forReset.username != "" && this.forReset.email != "") {
+      if (this.forReset.username != "" && this.forReset.email != "") {          //check username & emsil is not null
         axios
-          .post("http://localhost:5000/profile/forget", this.forReset)
+          .post("http://localhost:5000/profile/forget", this.forReset)          //path to database to check forgot password DB will return result success or fail
           .then(response => {
             console.log(response.data.result);
-            if (response.data.result == "Fail") {
+            if (response.data.result == "Fail") {                               //if fail web will alert and reload page
               alert("Username and/or Email invalid!");
               window.location.reload();
             } else {
-              router.push({ name: "ResetPass", params: { newName } });
+              router.push({ name: "ResetPass", params: { newName } });          //if success web will pass newName to ResetPass page
             }
           })
           .catch(error => {
             console.log(error);
           });
-        let newName = {
+        let newName = {                                                         //created newName
           usrname: this.forReset.username
         };
         console.log(newName);

@@ -5,6 +5,7 @@
         <div class="ui inverted segment" id="test2">
           <h2>Reset password</h2>
           <form class="ui form">
+            <!-- form part -->
             <div class="field" style="text-align: left">
               <label style="color: white; font-size: 15px">New Password</label>
               <div class="ui left icon input">
@@ -34,7 +35,7 @@
           <button class="ui button" style="margin-top: 10px" type="submit" @click="Reset">
             <i class="redo icon"></i>Reset Password
           </button>
-          <!-- <h1 style="color: white;">{{this.x}}</h1> -->
+          <!-- button will call Reset function when click -->
         </div>
       </div>
     </div>
@@ -56,35 +57,35 @@ export default {
     };
   },
   methods: {
-    Reset() {
-      if (
-        this.newpass.npass != "" &&
+    Reset() {                                                                 //reset function
+      if (  
+        this.newpass.npass != "" &&                                           //check form not null and passward match with confirm password
         this.newpass.connpass != "" &&
         this.newpass.npass == this.newpass.connpass
       ) {
-        let sendNewPass = {
+        let sendNewPass = {                                                   //make sendNewpass strore username and password
           username: this.x,
           password: this.newpass.npass
         };
         console.log(sendNewPass);
         axios
-          .post("http://localhost:5000/profile/rePassword", sendNewPass)
+          .post("http://localhost:5000/profile/rePassword", sendNewPass)      //send username and password to DB
           .then(response => {
-            console.log(response.data.result); ///////////////////////where!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            router.push({ name: "HelloWorld" });
+            console.log(response.data.result);
+            router.push({ name: "HelloWorld" });                               //if success will return to home page
           })
           .catch(error => {
             console.log(error);
           });
       } else {
-        alert("New Password is Not Match with Confirmpassword");
+        alert("New Password is Not Match with Confirmpassword");                //if  password and confirm password not match will alert
       }
     }
   },
   mounted() {
     console.log("hello");
-    console.log(this.$route);
-    this.x = this.$route.params.newName.usrname;
+    console.log(this.$route);                                                 
+    this.x = this.$route.params.newName.usrname;                                //receive username value fron other page
     console.log(this.x);
   }
 };
