@@ -16,16 +16,16 @@
             <h3 style="color: pink; font-size: 50px">Outline</h3>
             <br>
             <ul>
-              <li style="color: white; font-size: 25px" v-if="check != 'Success'">
+              <li style="color: white; font-size: 25px" v-if="check.result != 'Success'">
                 <a href="#/login" style="color: white;">Login to Generated</a>
               </li>
               <li style="color: white; font-size: 25px" v-else>
-                <a href="#/login" style="color: white;">Generated Bracket</a>
+                <a href="#/BracketGenerator" style="color: white;">Generated Bracket</a>
               </li>
               <br>
               <br>
               <li style="color: white; font-size: 25px">
-                <a href="#/" style="color: white;">Preview</a>
+                <a href="#/ji" style="color: white;">Preview</a>
               </li>
               <br>
               <br>
@@ -50,7 +50,23 @@ export default {
       uname: ""
     };
   },
-  methods: {}
+  methods: {},
+   mounted() {
+    axios
+      .post("http://localhost:5000/profile/checkLogin")
+      .then(response => {
+        // next(vm => (vm.check = response.data.result));
+        // console.log(this.check)
+        console.log(response.data);
+        this.uname = response.data.checkSession.usrname;
+        console.log(this.uname);
+        this.check = response.data;
+        console.log(response.data);
+        let ob = {
+          username: this.uname
+        };
+      })
+   }
 };
 </script>
 

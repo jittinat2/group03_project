@@ -8,9 +8,9 @@ import SignUp from '@/components/signup'
 import HowTo from '@/components/howto'
 import Forgot from '@/components/forgot'
 import ResetPass from '@/components/resetpass'
-import Preview from '@/components/preview'
 import Profile from '@/components/profile'
 import ShowBracketPage from '@/components/ShowBracketPage'
+import Ji from '@/components/ji'
 
 
 Vue.use(Router)
@@ -63,14 +63,14 @@ export default new Router({
       component: ResetPass
     },
     {
-      path: '/preview',
-      name: 'Preview',
-      component: Preview
-    },
-    {
       path: '/profile',
       name: 'Profile',
       component: Profile
+    },
+    {
+      path: '/ji',
+      name: 'Ji',
+      component: Ji
     },
   ]
 })

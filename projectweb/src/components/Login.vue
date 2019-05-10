@@ -14,7 +14,7 @@
                   v-model="Account.username"
                   placeholder="Username"
                 >
-                <i class="address card icon"></i>
+                <i class="user icon"></i>
               </div>
             </div>
             <div class="field" style="text-align: left">
@@ -26,7 +26,7 @@
                   v-model="Account.password"
                   placeholder="Password"
                 >
-                <i class="user icon"></i>
+                <i class="key icon"></i>
               </div>
             </div>
             <div style="text-align: right" id="test1">
@@ -126,5 +126,6 @@ export default {
 h2 {
   color: white;
   font-size: 30px;
+  
 }
 </style>

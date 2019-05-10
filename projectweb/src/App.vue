@@ -1,23 +1,27 @@
 <template>
   <div id="app">
     <div class="ui black inverted menu">
-      <a class="active item" href="#/">
-        <img src="./assets/logo.png">
-      </a>
+      <router-link :to="{ path: '/'}">
+      <div class=" item">
+        <img class="ui tiny image" src="./assets/LogoTournamentGenerator.png">
+      </div>
+      </router-link>
       <div class="compact right menu" v-if="check.result != 'Success'">
         <router-link :to="{ path: '/login'}">
           <div class="ui item">
-            <button class="ui invert black basic button" href="#/login">
+
+            <button class="ui center aligned invert black basic button" href="#/login" style="margin: 0.4px"> 
               <i class="inverted sign-in icon"></i>
-              <a style="color: white;">Login</a>
+              <a style="color: white; font-size: 15px;" >Login</a>
             </button>
-          </div>
+            </div>
+
         </router-link>
         <router-link :to="{ path: '/signup'}">
           <div class="ui item">
-            <button class="ui invert black basic button" href="#/signup">
+            <button class="ui invert black basic button" href="#/signup" style="margin: 0.4px">
               <i class="inverted user plus icon"></i>
-              <a style="color: white;">Sign Up</a>
+              <a style="color: white; font-size: 15px;">Sign Up</a>
             </button>
           </div>
         </router-link>
@@ -28,7 +32,7 @@
         </div>
         <div class="ui item">
           <i class="white sign-out"></i>
-          <a href="#/signup" @click="logOut">Log out</a>
+          <a href="/" @click="logOut">Log out</a>
         </div>
       </div>
     </div>

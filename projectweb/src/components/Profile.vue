@@ -1,5 +1,5 @@
 <template>
-  <div class="Preview">
+  <div class="Profile">
     <div class="ui segment" id="test1">
       <div class="ui inverted segment" id="test2">
         <h2>Profile</h2>
