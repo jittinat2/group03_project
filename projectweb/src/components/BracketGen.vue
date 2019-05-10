@@ -74,7 +74,7 @@ export default {
   data() {
     return {
       msg: "Tournament Generator",
-      tour_name: null,
+      tour_name: "",
       tour_size: null,
       check: [],
       newID: ""
